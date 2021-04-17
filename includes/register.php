@@ -1,3 +1,6 @@
+<?php // TODO fix this the nav acts funny in here
+//include('../html/header.html');
+?>
 <h2>Registation</h2>
 <?php
     require('config.inc.php');
@@ -29,9 +32,31 @@
             }
         }
 
+        // check confirm password is correct
+        if($password != $conpass) {
+            $errstr = $errorstr . 'mismatch password,';
+        }
+
+        $stmt = $db->prepare("SELECT * FROM users WHERE username=? OR email=?");
+        $stmt->bind_param("ss", $username, $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        if($user != '') {
+            $errorstr = $errorstr . 'user with name or email,';
+        }
+
+        // hash password
+        $pass_hash = get_hashbrowns($password);
+
         // find smarter way with nots and stuff
         if($errorstr == '') {
             $good = TRUE;
+
+            // now insert
+            $stmt = $db->prepare("INSERT INTO users (username, password, email, birth) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $username, $pass_hash, $email, $birth); // doubl check
+            $stmt->execute();
         }
 
         // insert into database
@@ -44,7 +69,7 @@
             echo('<h3>Enjoy The Games</h3>');
             echo('You will now be redirected to login');
             // redirect to login
-            header('Location: http://project/loginpage.php');
+            //header('Location: http://project/loginpage.php');
         } else {
             echo('<h3>uhh ohhs</h3>');
             echo('Something went wrong while registering<br/>');
@@ -68,4 +93,7 @@
             </form>
         ');
     }
+?>
+<?php
+//include('../html/footer.html');
 ?>
