@@ -32,7 +32,10 @@
     if($user == '') {
         $errorstr = $errorstr . 'incorrect info,';
     } else { // no errors and login good
-        //header('Location http://project/home.php');
+        // create session
+        $_SESSION['id'] = $user['id'];
+        echo($_SESSION['id']);
+        header('Location: http://project/index.php');
         // TODO find where to go
     }
 ?>
