@@ -1,11 +1,10 @@
 ///////////////////////////MISC//////////////////////////////////////////////
-
 function updateCounters(){
-	$("#beanCount").text("Beans: " + beanObject.beanCounter);
-	$(".leaderboard").text(beanObject.userID + ":" + beanObject.beansTotal);
-	$("#farmSpan").text(beanObject.farms + beanObject.upgradedFarms);
-	$("#plantationSpan").text(beanObject.plantations + beanObject.upgradedPlantations);
-	$("#beansPerSecond").text("Beans per second: "+beanObject.beansPerSecond.toFixed(1));
+	j("#beanCount").text("Beans: " + beanObject.beanCounter);
+	j(".leaderboard").text(beanObject.userID + ":" + beanObject.beansTotal);
+	j("#farmSpan").text(beanObject.farms + beanObject.upgradedFarms);
+	j("#plantationSpan").text(beanObject.plantations + beanObject.upgradedPlantations);
+	j("#beansPerSecond").text("Beans per second: "+beanObject.beansPerSecond.toFixed(1));
 }
 
 /*
@@ -19,7 +18,7 @@ function bounce(times, distance) {
 */
 
 function refreshStats() {
-	$(".statsContent").html("<p id='statsTitle' style='text-align: center; font-weight: bold;'>Stats</p><br /> User: " + beanObject.userID + "<br /><br /> Current Beans: " + beanObject.beanCounter + "<br /><br /> Total Beans: " + beanObject.beansTotal + "<br /><br /> Beans Per Second: " + beanObject.beansPerSecond + "<br /><br /> Farms: " + beanObject.farms + "<br /><br /> Plantations: " + beanObject.plantations + "<br /><br /> Upgraded Farms: " + beanObject.upgradedFarms + "<br /><br /> Upgraded Plantations: " + beanObject.upgradedPlantations);
+	j(".statsContent").html("<p id='statsTitle' style='text-align: center; font-weight: bold;'>Stats</p><br /> User: " + beanObject.userID + "<br /><br /> Current Beans: " + beanObject.beanCounter + "<br /><br /> Total Beans: " + beanObject.beansTotal + "<br /><br /> Beans Per Second: " + beanObject.beansPerSecond + "<br /><br /> Farms: " + beanObject.farms + "<br /><br /> Plantations: " + beanObject.plantations + "<br /><br /> Upgraded Farms: " + beanObject.upgradedFarms + "<br /><br /> Upgraded Plantations: " + beanObject.upgradedPlantations);
 }
 
 ///////////////////////////////////////////SHOP////////////////////////////////////////////////////////
@@ -28,34 +27,34 @@ function refreshStats() {
 function changeCostColor(){
 	
 	if(beanObject.beanCounter >= 50){
-		$("#coffeeBeanCost").css("color", "green");
+		j("#coffeeBeanCost").css("color", "green");
 	}
 	else{
-		$("#coffeeBeanCost").css("color", "red");
+		j("#coffeeBeanCost").css("color", "red");
 	}
 	if(beanObject.beanCounter >= 500){
-		$("#farmCost").css("color", "green");
+		j("#farmCost").css("color", "green");
 	}
 	else{
-		$("#farmCost").css("color", "red");
+		j("#farmCost").css("color", "red");
 	}
 	if(beanObject.beanCounter >= 1000){
-		$("#plantationCost").css("color", "green");
+		j("#plantationCost").css("color", "green");
 	}
 	else{
-		$("#plantationCost").css("color", "red");
+		j("#plantationCost").css("color", "red");
 	}
 	if(beanObject.beanCounter >= 2500){
-		$("#upgradedFarmCost").css("color", "green");
+		j("#upgradedFarmCost").css("color", "green");
 	}
 	else{
-		$("#upgradedFarmCost").css("color", "red");
+		j("#upgradedFarmCost").css("color", "red");
 	}
 	if(beanObject.beanCounter >= 5000){
-		$("#upgradedPlantationCost").css("color", "green");
+		j("#upgradedPlantationCost").css("color", "green");
 	}
 	else{
-		$("upgradedPlantationCost").css("color", "red");
+		j("upgradedPlantationCost").css("color", "red");
 	}
 }
 
@@ -229,54 +228,54 @@ function upgradedPlantationShop() {
 
 ////////////////////////////ON READY////////////////////////////////////////
 
-$(function() {
+j(function() {
 	///////////////////////////UI///////////////////////////////////////////
 	//init. tabs
-	$(".store").tabs({});
+	j(".store").tabs({});
 	
-	$("#user").on("keyup", function() {
-		beanObject.userID = $("#user").val();
-		$("#beanName").text($(this).val() + "'s ");
+	j("#user").on("keyup", function() {
+		beanObject.userID = j("#user").val();
+		j("#beanName").text(j(this).val() + "'s ");
 		updateCounters();
 	});
 	//Updates counters at bottom, current and total beans
 	updateCounters();
 	//---------------------------------------------------------------------
 	//Leaderboard button
-	$(".leaderboardBtn").on("click", function() {
-		$(".leaderboard").toggle("slide", {direction: "up"});
+	j(".leaderboardBtn").on("click", function() {
+		j(".leaderboard").toggle("slide", {direction: "up"});
 	});
 	//---------------------------------------------------------------------
 	//Open stats page when button clicked
-	$(".statsBtn").on("click", function() {
-		$(".stats").css({"display": "block", "padding-left": "10px"});
+	j(".statsBtn").on("click", function() {
+		j(".stats").css({"display": "block", "padding-left": "10px"});
 		refreshStats();
 		//Change cursor when hovering refresh image
-		$("#statsRefresh").on('mouseover', function(){
-			$(this).attr('src', 'assets/images/refresh-black.png');
+		j("#statsRefresh").on('mouseover', function(){
+			j(this).attr('src', 'assets/images/refresh-black.png');
 		});
-		$("#statsRefresh").on('mouseout', function(){
-			$(this).attr('src', 'assets/images/refresh-white.png');
+		j("#statsRefresh").on('mouseout', function(){
+			j(this).attr('src', 'assets/images/refresh-white.png');
 		});
 		//refresh the stats page when image clicked
-		$("#statsRefresh").on('click', function() {
+		j("#statsRefresh").on('click', function() {
 			refreshStats();
 		});
 		//Remove stats div when closed
-		$("#statsClose").on("click", function() {
-			$(".stats").css("display","none");
+		j("#statsClose").on("click", function() {
+			j(".stats").css("display","none");
 		});
 	});
 	//---------------------------------------------------------------------
 	//Remove alert when clicked
-	$("#alertClose").on("click", function() {
-		$(".alert").css("display","none");
-		$("#alertElement").text("");
+	j("#alertClose").on("click", function() {
+		j(".alert").css("display","none");
+		j("#alertElement").text("");
 	});
 	//---------------------------------------------------------------------
 	////////////////////////////COOKIES////////////////////////////////////
 	//Load the beanObject saved within the cookies
-	$("#loadCookies").click(function() {
+	j("#loadCookies").click(function() {
 		beanObject = JSON.parse(document.cookie);
 		updateCounters();
 		changeCostColor();
@@ -287,26 +286,26 @@ $(function() {
 	});
 	
 	//Save the cookies for the given user name
-	$("#saveCookies").on("click", function() {
+	j("#saveCookies").on("click", function() {
 		document.cookie = JSON.stringify(beanObject);
 	});
 	
 	//////////////////////////BEAN_IMG/////////////////////////////////////
 	//disable dragging to not mess with the bean image click
-	$("#beanImg").on("dragstart", function() {
+	j("#beanImg").on("dragstart", function() {
 		return false;
 	});
 	
-	$("#beanImg").on("mouseover", function() {
-		$(this).css("transform", "scale(1.1)");
+	j("#beanImg").on("mouseover", function() {
+		j(this).css("transform", "scale(1.1)");
 	});
 	
-	$("#beanImg").on("mouseout", function() {
-		$(this).css("transform", "scale(1.0)");
+	j("#beanImg").on("mouseout", function() {
+		j(this).css("transform", "scale(1.0)");
 	});
 	
 	//When you click down on the beanImg
-	$("#beanImg").mousedown( function(e) {
+	j("#beanImg").mousedown( function(e) {
 		//bounce(2, '10px'); //enable this if you want the bean to bounce after being clicked
 		beanObject.beanCounter +=(1 * beanMultiplier);
 		beanObject.beansTotal += (1 * beanMultiplier);
@@ -314,25 +313,25 @@ $(function() {
 		changeCostColor();
 		//------------------------------------------------------------------------
 		//text for the +1 when you click
-		var clickObj = $("#clickNumber").clone();
-		$("body").append(clickObj);
+		var clickObj = j("#clickNumber").clone();
+		j("body").append(clickObj);
 		clickObj.html("+"+beanMultiplier);
 		clickObj.css('position','absolute');
 		clickObj.offset({left: e.pageX-10, top: e.pageY-25});
 		clickObj.animate({"top": "-=40px"}, 500, "linear");
 		clickObj.animate({"opacity": 0, "top": "-=40px"}, 500, "linear", function() {
-			$(this).remove();
+			j(this).remove();
 		});
 		//------------------------------------------------------------------------
-		$("#beanImg").css("transform", "scale(0.95)"); //make bean smaller
-		$("#beanImg").css("cursor", "grabbing");
+		j("#beanImg").css("transform", "scale(0.95)"); //make bean smaller
+		j("#beanImg").css("cursor", "grabbing");
 	});
 	
 	//When you release the mouse button from the beanImg
-	$("#beanImg").mouseup(function() {
+	j("#beanImg").mouseup(function() {
 		//$("#beanImg").finish(); //if bounce is enabled, enable this as well or else animations will run longer than wanted
-		$("#beanImg").css("transform", "scale(1.1)");	//return bean size to original size
-		$("#beanImg").css("cursor", "grab");
+		j("#beanImg").css("transform", "scale(1.1)");	//return bean size to original size
+		j("#beanImg").css("cursor", "grab");
 		//----------------Clicking Achievements---------------------------
 		if(beanObject.beansTotal == 100){
 			if(achievementsUnlocked["beans100"] == false){
@@ -358,7 +357,7 @@ $(function() {
 	});
 	*/
 	
-	$("#storeBuyBtn").on("click", function() {
+	j("#storeBuyBtn").on("click", function() {
 		switch(shopSelected){
 			case "coffeeBean":
 				coffeeBeanShop();

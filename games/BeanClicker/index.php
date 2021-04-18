@@ -81,6 +81,14 @@
 				
 				getBeanObject('ryan');
 				
+				echo("function updateDB(){
+					document.cookie = JSON.stringify(beanObject);");
+						//TODO : find a way to set a timer for updating to database
+					echo("setTimeout(updateDB, 10000);
+				}");
+				
+				echo("updateDB();");
+				
 			?>
 		</script>
 		
