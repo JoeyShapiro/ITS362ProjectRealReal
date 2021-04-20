@@ -4,7 +4,7 @@ function updateCounters(){
 	j(".leaderboard").text(beanObject.userID + ":" + beanObject.beansTotal);
 	j("#farmSpan").text(beanObject.farms + beanObject.upgradedFarms);
 	j("#plantationSpan").text(beanObject.plantations + beanObject.upgradedPlantations);
-	j("#beansPerSecond").text("Beans per second: "+beanObject.beansPerSecond.toFixed(1));
+	j("#beansPerSecond").text("Beans per second: "+beanObject.beansPerSecond);
 }
 
 /*

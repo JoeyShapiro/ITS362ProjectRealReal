@@ -69,12 +69,40 @@
 						
 						$achievements_json = json_encode($achievements);
 
-						echo("var beanObject = ".$beanObj_json.";");
-						echo("var beanMultiplier = 1;");
-						echo("var achievementsUnlocked = ".$achievements_json.";");
+						echo("var beanObject = ".$beanObj_json.";
+						");
+						echo("var beanMultiplier = 1;
+						");
+						echo("var achievementsUnlocked = ".$achievements_json.";
+						");
 					} 
 					catch(PDOException $e) {
 					  	echo "Error: " . $e->getMessage();
+					}
+					$conn = null;
+				}
+				
+				function insertDB(int $currentBeans, int $totalBeans, int $beansPerSecond, int $farms, int $plantations, int $upgradedFarms, int $upgradedPlantations, int $coffeeBeansUsed, $userID){
+					try {
+						$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+						
+						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+						
+						$stmt = $conn->prepare("UPDATE beanClicker SET currentBeans=:currentBeans, totalBeans=:totalBeans, beansPerSecond=:beansPerSecond, farms=:farms, plantations=:plantations, upgradedFarms=:upgradedFarms, upgradedPlantations=:upgradedPlantations, coffeeBeansUsed=:coffeeBeansUsed WHERE userID=:userID");
+						$stmt->bindParam(':currentBeans', $currentBeans);
+						$stmt->bindParam(':totalBeans', $totalBeans);
+						$stmt->bindParam(':beansPerSecond', $beansPerSecond);
+						$stmt->bindParam(':farms', $farms);
+						$stmt->bindParam(':plantations', $plantations);
+						$stmt->bindParam(':upgradedFarms', $upgradedFarms);
+						$stmt->bindParam(':upgradedPlantations', $upgradedPlantations);
+						$stmt->bindParam(':coffeeBeansUsed', $coffeeBeansUsed);
+						$stmt->bindParam(':userID', $userID);
+						//echo("alert('".$userID."');");
+						$stmt->execute();
+					}
+					catch(PDOException $e) {
+				  		echo "Error: " . $e->getMessage();
 					}
 					$conn = null;
 				}
@@ -94,13 +122,24 @@
 					if (typeof attr !== 'undefined' && attr !== false) {
     						j('#saveBtn').removeAttr('disabled');
 					}
-					setTimeout(updateDB, 3000);
-				}
-				updateDB();");
+					setTimeout(updateDB, 10000);
+				};
+				
+				updateDB();
+				");
 				
 				
-					if(isset($_POST['saveBtn']) and $_POST['beanCountContainer'] != null){
-						echo("alert(".$_POST['beanCountContainer']." : ".$_POST['beanTotalContainer']." : ".$_POST['beansPerSecondContainer']." : ".$_POST['farmsContainer']." : ".$_POST['plantationsContainer']." : ".$_POST['upgradedFarmsContainer']." : ".$_POST['upgradedPlantationsContainer']." : ".$_POST['coffeeBeansUsedContainer'].");");
+					if(isset($_POST['saveBtn']) and $userID != null){
+						$currentBeans = (int)$_POST['beanCountContainer'];
+						$totalBeans = (int)$_POST['beanTotalContainer'];
+						$bps = (int)$_POST['beansPerSecondContainer'];
+						$farms = (int)$_POST['farmsContainer'];
+						$plantations = (int)$_POST['plantationsContainer'];
+						$upFarms = (int)$_POST['upgradedFarmsContainer'];
+						$upPlantations = (int)$_POST['upgradedPlantationsContainer'];
+						$coffeeUsed = (int)$_POST['coffeeBeansUsedContainer'];
+						insertDB($currentBeans, $totalBeans, $bps, $farms, $plantations, $upFarms, $upPlantations, $coffeeUsed, 'ryan');
+						getBeanObject($userID);
 					}
 				?>
 		</script>

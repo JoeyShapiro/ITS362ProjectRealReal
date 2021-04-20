@@ -26,8 +26,8 @@
 
 body{
 	width: 100%;
-    padding:0;
-    margin:0;
+    	padding:0;
+    	margin:0;
 	overflow: hidden;
 }
 
@@ -145,21 +145,6 @@ h2{
 
 #alertElement{
 	font-size: 16px;
-}
-
-#userin { 
-	background: lightgray;
-	border: 2px solid white;
-	top:2;
-    left: 2;
-    margin:auto;
-	width: 350px;
-	padding: 3px;
-	position: absolute;
-}
-
-#user {
-	width: 50%;
 }
 
 .leaderboardBtn {
