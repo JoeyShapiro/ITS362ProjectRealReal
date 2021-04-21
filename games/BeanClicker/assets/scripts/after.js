@@ -240,6 +240,7 @@ j(function() {
 	});
 	//Updates counters at bottom, current and total beans
 	updateCounters();
+	changeCostColor();
 	//---------------------------------------------------------------------
 	//Leaderboard button
 	j(".leaderboardBtn").on("click", function() {
@@ -273,22 +274,6 @@ j(function() {
 		j("#alertElement").text("");
 	});
 	//---------------------------------------------------------------------
-	////////////////////////////COOKIES////////////////////////////////////
-	//Load the beanObject saved within the cookies
-	j("#loadCookies").click(function() {
-		beanObject = JSON.parse(document.cookie);
-		updateCounters();
-		changeCostColor();
-		farmTimer();
-		plantationTimer();
-		upgradedFarmTimer();
-		upgradedPlantationTimer();
-	});
-	
-	//Save the cookies for the given user name
-	j("#saveCookies").on("click", function() {
-		document.cookie = JSON.stringify(beanObject);
-	});
 	
 	//////////////////////////BEAN_IMG/////////////////////////////////////
 	//disable dragging to not mess with the bean image click
