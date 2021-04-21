@@ -22,7 +22,7 @@
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
         // do stuff
-        echo('hello ' . $user['username']);
+        echo('<h3>hello ' . $user['username'] . '</h3>');
     }
 ?>
 
