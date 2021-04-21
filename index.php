@@ -21,7 +21,6 @@
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
-
         // do stuff
         echo('hello ' . $user['username']);
     }
