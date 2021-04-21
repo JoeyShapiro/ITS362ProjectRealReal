@@ -9,16 +9,16 @@
 		<script src="./assets/scripts/before.js"></script>
 		<script type="text/javascript">
 			<?php
-				$userID = 'ryan';
+				$username = 'ryan';
 			
-				function getBeanObject($userID){
+				function getBeanObject($username){
 					try {
 						$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
 						
 						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						
-						$stmt = $conn->prepare("SELECT currentBeans, totalBeans, beansPerSecond, farms, plantations, upgradedFarms, upgradedPlantations, coffeeBeansUsed FROM beanClicker WHERE userID=:userID");
-						$stmt->bindParam(':userID', $userID);
+						$stmt = $conn->prepare("SELECT currentBeans, totalBeans, beansPerSecond, farms, plantations, upgradedFarms, upgradedPlantations, coffeeBeansUsed FROM beanClicker WHERE username=:username");
+						$stmt->bindParam(':username', $username);
 						$stmt->execute();
 						
 						$result = $stmt->fetchAll();
@@ -34,8 +34,8 @@
 							$coffeeBeansUsed = $row['coffeeBeansUsed'];
 						}
 						
-						$stmt = $conn->prepare("SELECT beans100, beans1000, addictionBegins, coffeeDependent, coffeeAddict FROM beanAchievements WHERE userID=:userID");
-						$stmt->bindParam(':userID', $userID);
+						$stmt = $conn->prepare("SELECT beans100, beans1000, addictionBegins, coffeeDependent, coffeeAddict FROM beanAchievements WHERE username=:username");
+						$stmt->bindParam(':username', $username);
 						$stmt->execute();
 						
 						$result = $stmt->fetchAll();
@@ -48,7 +48,7 @@
 							$coffeeAddict = $row['coffeeAddict'];
 						}
 						
-						$beanObj->userID = $userID;
+						$beanObj->username = $username;
 						$beanObj->beanCounter = (int)$currentBeans;
 						$beanObj->beansTotal = (int)$totalBeans;
 						$beanObj->beansPerSecond = (float)$beansPerSecond;
@@ -60,7 +60,7 @@
 						
 						$beanObj_json = json_encode($beanObj);
 						
-						$achievements->userID = $userID;
+						$achievements->username = $username;
 						$achievements->beans100 = $beans100;
 						$achievements->beans1000 = $beans1000;
 						$achievements->addictionBegins = $addictionBegins;
@@ -82,13 +82,13 @@
 					$conn = null;
 				}
 				
-				function insertDB(int $currentBeans, int $totalBeans, int $beansPerSecond, int $farms, int $plantations, int $upgradedFarms, int $upgradedPlantations, int $coffeeBeansUsed, $userID){
+				function insertDB(int $currentBeans, int $totalBeans, int $beansPerSecond, int $farms, int $plantations, int $upgradedFarms, int $upgradedPlantations, int $coffeeBeansUsed, $username){
 					try {
 						$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
 						
 						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						
-						$stmt = $conn->prepare("UPDATE beanClicker SET currentBeans=:currentBeans, totalBeans=:totalBeans, beansPerSecond=:beansPerSecond, farms=:farms, plantations=:plantations, upgradedFarms=:upgradedFarms, upgradedPlantations=:upgradedPlantations, coffeeBeansUsed=:coffeeBeansUsed WHERE userID=:userID");
+						$stmt = $conn->prepare("UPDATE beanClicker SET currentBeans=:currentBeans, totalBeans=:totalBeans, beansPerSecond=:beansPerSecond, farms=:farms, plantations=:plantations, upgradedFarms=:upgradedFarms, upgradedPlantations=:upgradedPlantations, coffeeBeansUsed=:coffeeBeansUsed WHERE username=:username");
 						$stmt->bindParam(':currentBeans', $currentBeans);
 						$stmt->bindParam(':totalBeans', $totalBeans);
 						$stmt->bindParam(':beansPerSecond', $beansPerSecond);
@@ -97,7 +97,7 @@
 						$stmt->bindParam(':upgradedFarms', $upgradedFarms);
 						$stmt->bindParam(':upgradedPlantations', $upgradedPlantations);
 						$stmt->bindParam(':coffeeBeansUsed', $coffeeBeansUsed);
-						$stmt->bindParam(':userID', $userID);
+						$stmt->bindParam(':username', $username);
 						$stmt->execute();
 					}
 					catch(PDOException $e) {
@@ -106,7 +106,7 @@
 					$conn = null;
 				}
 				
-				getBeanObject($userID);
+				getBeanObject($username);
 				
 				echo("function updateDB() {
 					j('#beanCountContainer').val(beanObject.beanCounter);
@@ -128,7 +128,7 @@
 				");
 				
 				
-					if(isset($_POST['saveBtn']) and $userID != null){
+					if(isset($_POST['saveBtn']) and $username != null){
 						$currentBeans = (int)$_POST['beanCountContainer'];
 						$totalBeans = (int)$_POST['beanTotalContainer'];
 						$bps = (int)$_POST['beansPerSecondContainer'];
@@ -138,7 +138,7 @@
 						$upPlantations = (int)$_POST['upgradedPlantationsContainer'];
 						$coffeeUsed = (int)$_POST['coffeeBeansUsedContainer'];
 						insertDB($currentBeans, $totalBeans, $bps, $farms, $plantations, $upFarms, $upPlantations, $coffeeUsed, 'ryan');
-						getBeanObject($userID);
+						getBeanObject($username);
 					}
 				?>
 		</script>
