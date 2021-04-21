@@ -1,5 +1,49 @@
-<ul>
-    <li><a href="games/hackingGame/index.htm">Hacking Game</a></li>
-    <li><a href="games/BeanClicker/index.php">Bean Clicker</a></li>
-    <li><a href="games/">Game 3</a></li>
-</ul>
+<script>
+    function display(e, game_id) {
+        x = e.clientX;
+        y = e.clientY;
+        selectedGame = document.getElementById(game_id);
+        with (selectedGame) {
+            style.display = "block";
+            style.position = "absolute";
+            style.top = y+15;
+            style.left = x+10;
+            style.backgroundColor = "beige";
+        }
+    }
+
+    function clear() {
+        document.getElementById("game1").style.display = "none";
+        document.getElementById("game2").style.display = "none";
+        document.getElementById("game3").style.display = "none";
+    }
+</script>
+
+<table>
+    <tr>
+        <td>
+            <a href="games/hackingGame/index.htm"><img src="img/lib/game1.png" onmousemove="display(event, 'game1');" onmouseout="clear();" width="196" height="196" /></a> <br>
+        </td>
+        <td>
+            <a href="games/BeanClicker/index.php"><img src="img/lib/game2.png" onmousemove="display(event, 'game2');" onmouseout="clear();" width="196" height="196" /></a> <br>
+        </td>
+        <td>
+            <a href="games/"><img src="img/lib/game3.jpg" onmousemove="display(event, 'game3');" onmouseout="clear();" width="196" height="196" /></a> <br>
+        </td>
+    </tr>
+</table>
+
+<div id="game1" style="display: none;">
+    Name: Hacking Game<br>
+    Author(GitHub): JoeyShapiro<br>
+</div>
+
+<div id="game2" style="display: none;">
+    Name: Bean Clicker<br>
+    Author(GitHub): bbdcmf<br>
+</div>
+
+<div id="game3" style="display: none;">
+    Name: <br>
+    Author(GitHub): pdizon<br>
+</div>
