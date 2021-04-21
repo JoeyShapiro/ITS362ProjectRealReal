@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
     require('includes/config.inc.php');
     require('mysql.inc.php');
     include('html/header.html');
@@ -46,3 +47,15 @@
 <?php
     require('html/footer.html');
 ?>
+=======
+	session_start();
+	require('includes/config.inc.php');
+	require('mysql.inc.php');
+	include('html/header.html');
+	if(isset($_SESSION['userID'])) {
+		// do stuff
+		echo("<br /><h3>Hello ". $_SESSION['userID']."</h3>");
+	}
+	require('html/footer.html');
+?>
+>>>>>>> 485b327f53458fe58875f094ebf2b1c34561e4a5

@@ -98,7 +98,6 @@
 						$stmt->bindParam(':upgradedPlantations', $upgradedPlantations);
 						$stmt->bindParam(':coffeeBeansUsed', $coffeeBeansUsed);
 						$stmt->bindParam(':userID', $userID);
-						//echo("alert('".$userID."');");
 						$stmt->execute();
 					}
 					catch(PDOException $e) {
@@ -182,6 +181,7 @@
 				<input type="text" id="upgradedFarmsContainer" name="upgradedFarmsContainer" style="display: none"/>
 				<input type="text" id="upgradedPlantationsContainer" name="upgradedPlantationsContainer" style="display: none"/>
 				<input type="text" id="coffeeBeansUsedContainer" name="coffeeBeansUsedContainer" style="display: none"/>
+				<input type="submit" id="home" name="home" value="Home" formaction="../../"/>
 				<input type="submit" id="saveBtn" name="saveBtn" value="Save" disabled="disabled"/>
 			</form>
 		</div>
