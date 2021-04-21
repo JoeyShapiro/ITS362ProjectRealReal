@@ -1,5 +1,14 @@
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        
+<script>
+    $(document).ready(function () {
+        $("#top").tabs();
+    });
+</script>
+
 <?php
-<<<<<<< HEAD
     require('includes/config.inc.php');
     require('mysql.inc.php');
     include('html/header.html');
@@ -25,7 +34,6 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-
     echo('<h3>' . $row['total'] . ' Total Users</h3>');
 ?>
 </div>
@@ -44,18 +52,67 @@
     </h4>
 </div>
 
+<div id="top">
+    <ul>
+        <li><a href="#top-game1">Hacking Game</a></li>
+        <li><a href="#top-game2">Bean Clicker</a></li>
+        <li><a href="#top-game3">Game 3</a></li>
+    </ul>
+    <div id="top-game1">
+        <table id="table-game1">
+            <tr><th>User</th><th>Score</th></tr>
+<?php
+    // get all scores of users from game 1
+    $gid = 1;
+    $stmt = $db->prepare("SELECT * FROM leaderboard WHERE gid=?");
+    $stmt->bind_param("i", $gid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while($row = $result->fetch_assoc()) {
+        echo('<tr><td>' . $row['uid'] . '</td><td>' . $row['score'] . '</td></tr>');
+    }
+?>
+        </table>
+    </div>
+
+    <div id="top-game2">
+        <table id="table-game2">
+            <tr><th>User</th><th>Score</th></tr>
+<?php
+    // get all scores of users from game 2
+    $gid = 2;
+    $stmt = $db->prepare("SELECT * FROM leaderboard WHERE gid=?");
+    $stmt->bind_param("i", $gid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while($row = $result->fetch_assoc()) {
+        echo('<tr><td>' . $row['uid'] . '</td><td>' . $row['score'] . '</td></tr>');
+    }
+?>
+        </table>
+    </div>
+
+    <div id="top-game3">
+        <table id="table-game3">
+            <tr><th>User</th><th>Score</th></tr>
+<?php
+    // get all scores of users from game 3
+    $gid = 3;
+    $stmt = $db->prepare("SELECT * FROM leaderboard WHERE gid=?");
+    $stmt->bind_param("i", $gid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while($row = $result->fetch_assoc()) {
+        echo('<tr><td>' . $row['uid'] . '</td><td>' . $row['score'] . '</td></tr>');
+    }
+?>
+        </table>
+    </div>
+</div>
+
 <?php
     require('html/footer.html');
 ?>
-=======
-	session_start();
-	require('includes/config.inc.php');
-	require('mysql.inc.php');
-	include('html/header.html');
-	if(isset($_SESSION['userID'])) {
-		// do stuff
-		echo("<br /><h3>Hello ". $_SESSION['userID']."</h3>");
-	}
-	require('html/footer.html');
-?>
->>>>>>> 485b327f53458fe58875f094ebf2b1c34561e4a5
