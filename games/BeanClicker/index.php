@@ -13,6 +13,46 @@ $user = $result->fetch_assoc();
 
 $username = $user['username'];
 
+function insertNew(string $username) {
+	try {
+	
+		$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+		
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$stmt = $conn->prepare("INSERT INTO beanClicker (username) VALUES (:username)");
+		$stmt->bindParam(':username', $username);
+		$stmt->execute();
+	}
+	catch(PDOException $e) {
+	  	echo "Error: " . $e->getMessage();
+	}
+	$conn = null;
+}
+
+
+try {
+	$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+	
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	
+	$stmt = $conn->prepare("SELECT username FROM beanClicker WHERE username=:username");
+	$stmt->bindParam(':username', $username);
+	$stmt->execute();
+	
+	$result = $stmt->fetchAll();
+	
+	foreach($result as $row) {
+		$name = $row['username'];
+	}
+	if($name == '') {
+		insertNew($username);
+	}
+}
+catch(PDOException $e) {
+  	echo "Error: " . $e->getMessage();
+}
+$conn = null;
+
 function getBeanObject(string $username){
 	try {
 		$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
@@ -111,7 +151,6 @@ function insertDB(int $currentBeans, int $totalBeans, int $farms, int $plantatio
 	}
 	$conn = null;
 }
-
 getBeanObject($username);
 getBeanAchievements($username);
 
@@ -123,14 +162,7 @@ echo("function updateDB() {
 	j('#upgradedFarmsContainer').val(beanObject.upgradedFarms);
 	j('#upgradedPlantationsContainer').val(beanObject.upgradedPlantations);
 	j('#coffeeBeansUsedContainer').val(beanObject.coffeeBeansUsed);
-	var attr = j('#saveBtn').attr('disabled');
-	if (typeof attr !== 'undefined' && attr !== false) {
-		j('#saveBtn').removeAttr('disabled');
-	}
-	setTimeout(updateDB, 10000);
 };
-
-updateDB();
 ");
 				
 				

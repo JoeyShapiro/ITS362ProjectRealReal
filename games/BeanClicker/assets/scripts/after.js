@@ -240,6 +240,12 @@ j(function() {
 	farmTimer();
 	plantationTimer();
 	upgradedFarmTimer();
+	
+	j('#userinform').submit(function() {
+	    updateDB();
+	    return true; // return false to cancel form action
+	});
+		
 	//---------------------------------------------------------------------
 	//Leaderboard button
 	j(".leaderboardBtn").on("click", function() {
