@@ -30,13 +30,15 @@
     $user = $result->fetch_assoc();
     if($user['id'] == '') {
         echo('incorrect info, try again');
-        header("Refresh: 3; URL=http://project/loginpage.php"); // localhost/ITS362ProjectRealReal for you
+        $location = 'http://' . BASE_URL . 'loginpage.php';
+        header("Refresh: 3; URL=$location"); // change in config.inc.php for you
 	exit();
     } else { // no errors and login good
         // create session
         $_SESSION['id'] = $user['id'];
         echo("Logic successfully, you will now be redirected to the main page.<br /><h3>Hello ".$username."</h3>");
-        header("Refresh: 3; URL=http://project/index.php"); // localhost/ITS362ProjectRealReal for you
+        $location = 'http://' . BASE_URL . 'index.php';
+        header("Refresh: 3; URL=$location"); // change in config.inc.php for you
 	exit();
         // TODO find where to go
     }

@@ -80,7 +80,8 @@
 			echo('<h3>Enjoy The Games</h3>');
 			echo('You will now be redirected to login');
 			// redirect to login
-			header("Refresh: 3; URL=http://project/index.php"); // localhost/ITS362ProjectRealReal for you
+			$location = 'http://' . BASE_URL . 'index.php';
+			header("Refresh: 3; URL=$location"); // localhost/ITS362ProjectRealReal for you
 			exit();
 			
 		} else {

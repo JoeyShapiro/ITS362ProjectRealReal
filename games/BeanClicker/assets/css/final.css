@@ -1,0 +1,255 @@
+::-moz-selection {
+    background-color: transparent;
+}
+
+::selection {
+    background-color: transparent;
+}
+
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+}
+
+body{
+	width: 100%;
+    	padding:0;
+    	margin:0;
+	overflow: hidden;
+}
+
+h2{
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#beanStuff{
+	overflow: hidden;
+}
+
+#bean {
+	position: absolute;
+	left: calc(50% - 160px);
+	top: calc(50% - 101.5px);
+}
+
+#clickNumber {
+	pointer-events: none;
+	font-weight: bold;
+	font-size: 20px;
+	color: white;
+}
+
+#beanImg{
+	position:relative;
+	height: 203;
+    width: 320;
+	margin: 0 auto;
+	cursor: grab;
+}
+
+#beanClicker {
+	text-align: center;
+	position: fixed;
+	width: 30%;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	cursor: default;
+	clear: both;
+	color: white;
+}
+
+#beanClicker span {
+	margin-top: 5px;
+	font-size: large;
+	font-weight: bold;
+}
+
+.statsBtn {
+	border: 4px solid white;
+	position: absolute;
+	top: 2px;
+	right:138px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: lightgray;
+	cursor: pointer;
+}
+
+.stats {
+	background-color: lightgray;
+	border: 4px solid white;
+	height: 60%;
+	width: 40%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	margin: auto;
+	cursor: default;
+	z-index: 1000;
+	display: none;
+}
+
+#statsRefresh:hover {
+	cursor: pointer;
+}
+
+.alert {
+	text-align: center;
+	padding: 10px;
+	background-color: #007fff;
+	color: white;
+	border: 4px solid white;
+    right:0px;
+	left: 0px;
+	top: 20%;
+	width: 30%;
+    margin:auto;
+	position: absolute;
+	display: none;
+}
+
+.closebtn {
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
+}
+
+#alertElement{
+	font-size: 16px;
+}
+
+.leaderboardBtn {
+	border: 4px solid white;
+	position: absolute;
+	top: 2;
+	right: 2;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: lightgray;
+}
+
+.leaderboardBtn:hover {
+	color: white;
+	cursor: pointer;
+}
+
+.leaderboard {
+	display: none;
+	text-align: center;
+	border: 4px solid white;
+	position: absolute;
+	width: 100%;
+	top: 30;
+	left: -4;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: lightgray;
+	overflow: hidden;
+}
+
+div.store {
+	text-align: center;
+	position: fixed;
+	right: 2px;
+	bottom: 2px;
+	height : auto;
+	overflow: visible;
+}
+
+.shopTables td{
+	position: relative;
+	border: 1px solid black;
+	padding: 10px;
+	text-align: center;
+	right: 0;
+}
+
+.shopTables td:hover{
+	color: white;
+	cursor: pointer;
+}
+
+.shopTables{
+	width: 100%;
+	margin-bottom: 5px;
+	position: relative;
+}
+
+.cost {
+	font-size: 12px;
+	color: red;
+}
+
+#storeBuyBtn {
+	position: absolute;
+	padding-left: 3px;
+	padding-right: 3px;
+	bottom: 5;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	background-color: darkgray;
+	border: 1px solid black;
+}
+
+#storeBuyBtn:hover {
+	cursor: pointer;
+}
+
+#storeItemName {
+	font-family: bold;
+}
+
+div.info {
+	position: absolute;
+	background-color: lightgray;
+	border: 2px solid white;
+	left: 2px;
+	bottom: 2px;
+	font-size: 20px;
+	overflow: hidden;
+	cursor: default;
+}
+
+div.info td {
+	border: 1px solid black;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: lightgray;
+}

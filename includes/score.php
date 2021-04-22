@@ -21,7 +21,8 @@
 
     if($uid == '') {
         echo('incorrect info, try again');
-        header("Refresh: 3; URL=http://project/loginpage.php"); // localhost/ITS362ProjectRealReal for you
+        $location = 'http://' . BASE_URL . 'loginpage.php';
+        header("Refresh: 3; URL=$location"); // change in config.inc.php for you
 	    exit();
     } else { // no errors and login good
         // create session
@@ -29,7 +30,8 @@
         $stmt->bind_param("iii", $gid, $uid, intval($scorem));
         $stmt->execute();
         $result = $stmt->get_result();
-        header("Refresh: 1; URL=http://project/libpage.php"); // localhost/ITS362ProjectRealReal for you
+        $location = 'http://' . BASE_URL . 'libpage.php';
+        header("Refresh: 1; URL=$location"); // change in config.inc.php for you
         exit();
     }
 ?>
