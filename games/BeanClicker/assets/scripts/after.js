@@ -1,10 +1,10 @@
 ///////////////////////////MISC//////////////////////////////////////////////
 function updateCounters(){
 	j("#beanCount").text("Beans: " + beanObject.beanCounter);
-	j(".leaderboard").text(beanObject.userID + ":" + beanObject.beansTotal);
+	j(".leaderboard").text(beanObject.username + ":" + beanObject.beansTotal);
 	j("#farmSpan").text(beanObject.farms + beanObject.upgradedFarms);
 	j("#plantationSpan").text(beanObject.plantations + beanObject.upgradedPlantations);
-	j("#beansPerSecond").text("Beans per second: "+beanObject.beansPerSecond);
+	j("#beansPerSecond").text("Beans per second: "+(beanObject.farms*0.1+beanObject.plantations*0.3+beanObject.upgradedFarms*0.5+beanObject.upgradedPlantations));
 }
 
 /*
@@ -18,7 +18,7 @@ function bounce(times, distance) {
 */
 
 function refreshStats() {
-	j(".statsContent").html("<p id='statsTitle' style='text-align: center; font-weight: bold;'>Stats</p><br /> User: " + beanObject.userID + "<br /><br /> Current Beans: " + beanObject.beanCounter + "<br /><br /> Total Beans: " + beanObject.beansTotal + "<br /><br /> Beans Per Second: " + beanObject.beansPerSecond + "<br /><br /> Farms: " + beanObject.farms + "<br /><br /> Plantations: " + beanObject.plantations + "<br /><br /> Upgraded Farms: " + beanObject.upgradedFarms + "<br /><br /> Upgraded Plantations: " + beanObject.upgradedPlantations);
+	j(".statsContent").html("<p id='statsTitle' style='text-align: center; font-weight: bold;'>Stats</p><br /> User: " + beanObject.username + "<br /><br /> Current Beans: " + beanObject.beanCounter + "<br /><br /> Total Beans: " + beanObject.beansTotal + "<br /><br /> Beans Per Second: " + (beanObject.farms*0.1+beanObject.plantations*0.3+beanObject.upgradedFarms*0.5+beanObject.upgradedPlantations) + "<br /><br /> Farms: " + beanObject.farms + "<br /><br /> Plantations: " + beanObject.plantations + "<br /><br /> Upgraded Farms: " + beanObject.upgradedFarms + "<br /><br /> Upgraded Plantations: " + beanObject.upgradedPlantations);
 }
 
 ///////////////////////////////////////////SHOP////////////////////////////////////////////////////////
@@ -78,8 +78,8 @@ function farmTimer(){
 //-----------------------------------------------
 function plantationTimer(){
 	if(beanObject.plantations > 0){
-		beanObject.beanCounter += (10 * beanObject.plantations);
-		beanObject.beansTotal += (10 * beanObject.plantations);
+		beanObject.beanCounter += (3 * beanObject.plantations);
+		beanObject.beansTotal += (3 * beanObject.plantations);
 		updateCounters();
 		setTimeout(plantationTimer, 10000);
 	}
@@ -96,8 +96,8 @@ function upgradedFarmTimer(){
 //-----------------------------------------------
 function upgradedPlantationTimer(){
 	if(beanObject.upgradedPlantations > 0){
-		beanObject.beanCounter += (50 * beanObject.upgradedPlantations);
-		beanObject.beansTotal += (50 * beanObject.upgradedPlantations);
+		beanObject.beanCounter += (10 * beanObject.upgradedPlantations);
+		beanObject.beansTotal += (10 * beanObject.upgradedPlantations);
 		updateCounters();
 		setTimeout(upgradedPlantationTimer, 10000);
 	}
@@ -143,7 +143,6 @@ function farmShop() {
 
 	beanObject.beanCounter -= 501;
 	beanObject.beansTotal -= 1;
-	beanObject.beansPerSecond += 0.1;
 	beanObject.farms++;
 	updateCounters();
 	
@@ -163,7 +162,6 @@ function plantationShop() {
 
 	beanObject.beanCounter -= 1010;
 	beanObject.beansTotal -= 10;
-	beanObject.beansPerSecond += 1;
 	beanObject.plantations++;
 	updateCounters();
 	
@@ -188,7 +186,6 @@ function upgradedFarmShop() {
 
 	beanObject.beanCounter -= 2505;
 	beanObject.beansTotal -= 5;
-	beanObject.beansPerSecond += 0.4;
 	beanObject.farms--;
 	beanObject.upgradedFarms++;
 	updateCounters();
@@ -214,7 +211,6 @@ function upgradedPlantationShop() {
 
 	beanObject.beanCounter -= 5050;
 	beanObject.beansTotal -= 50;
-	beanObject.beansPerSecond += 4;
 	beanObject.plantations--;
 	beanObject.upgradedPlantations++;
 	updateCounters();
@@ -234,13 +230,16 @@ j(function() {
 	j(".store").tabs({});
 	
 	j("#user").on("keyup", function() {
-		beanObject.userID = j("#user").val();
+		beanObject.username = j("#user").val();
 		j("#beanName").text(j(this).val() + "'s ");
 		updateCounters();
 	});
 	//Updates counters at bottom, current and total beans
 	updateCounters();
 	changeCostColor();
+	farmTimer();
+	plantationTimer();
+	upgradedFarmTimer();
 	//---------------------------------------------------------------------
 	//Leaderboard button
 	j(".leaderboardBtn").on("click", function() {

@@ -1,0 +1,129 @@
+		</script>
+		
+		<script src="./assets/scripts/after.js"></script>
+		<link rel="stylesheet" href="assets/css/jqueryui.css">
+		<link rel="stylesheet" href="assets/css/beanClicker.css">
+	</head>
+
+	<body>
+		<div class="fullscreen-bg">
+			<video loop muted autoplay class="fullscreen-bg__video">
+				<source src="assets/images/Galaxy.webm" type="video/webm">
+			</video>
+		</div>
+		
+		<div class="leaderboardBtn">
+			Leaderboard
+			<div class="leaderboard">
+			</div>
+		</div>
+		
+		<div class="statsBtn">
+			Stats
+		</div>
+		
+		<div class="stats">
+			<span id="statsClose" class="closebtn">&times;</span> 
+			<img id='statsRefresh' src='assets/images/refresh-white.png' style=' padding-top: 3px; padding-right: 8px; height: 15px; width: 15px; float: right;' />
+			<div class="statsContent"></div>
+		</div>
+		
+		<div id="userin">
+			<form method="post">
+				<input type="text" id="beanCountContainer" name="beanCountContainer" style="display: none"/>
+				<input type="text" id="beanTotalContainer" name="beanTotalContainer" style="display: none"/>
+				<input type="text" id="beansPerSecondContainer" name="beansPerSecondContainer" style="display: none"/>
+				<input type="text" id="farmsContainer" name="farmsContainer" style="display: none"/>
+				<input type="text" id="plantationsContainer" name="plantationsContainer" style="display: none"/>
+				<input type="text" id="upgradedFarmsContainer" name="upgradedFarmsContainer" style="display: none"/>
+				<input type="text" id="upgradedPlantationsContainer" name="upgradedPlantationsContainer" style="display: none"/>
+				<input type="text" id="coffeeBeansUsedContainer" name="coffeeBeansUsedContainer" style="display: none"/>
+				<input type="submit" id="home" name="home" value="Home" formaction="../../"/>
+				<input type="submit" id="saveBtn" name="saveBtn" value="Save" disabled="disabled"/>
+			</form>
+		</div>
+		
+		<div id="beanClicker">
+			<h2>Bean Clicker</h2><br /><br />
+			<span id="beanName"></span><span id="beanCount"></span>
+		</div>
+		
+		<div class="alert">
+			<span id="alertClose" class="closebtn">&times;</span> 
+			<strong id="alertType"></strong><br /><br /><span id="alertElement"></span>
+		</div>
+		
+		<div id="beanStuff">
+			<div id="bean">
+				<img id="beanImg" src="./assets/images/bean.png" />
+			</div>
+			<div id="clickNumber"></div>
+		</div>
+		
+		<div class="shopHover">
+		
+		</div>
+		
+		<div class="store">
+			<b>Shop</b>
+			<ul>
+		
+				<li><a href="#Items">Items</a></li>
+				<li><a href="#Buidings">Buildings</a></li>
+				<li><a href="#Upgrades">Upgrades</a></li>
+		
+			</ul>
+			
+			<div id="Items">
+			
+				<table id="itemsTable" class="shopTables">
+				
+					<tr>
+						<td id="coffeeBean" href="#" title=""> Coffee Bean<br /><span id="coffeeBeanCost" class="cost">50 Beans</span> </td>
+					</tr>
+					<tr>
+						
+					</tr>
+				
+				</table>
+				
+			</div>
+			
+			<div id="Buidings">
+				<table id="buildingsTable" class="shopTables">
+					<tr>
+						<td id="farm" href="#" title="">Farm<br /><span id="farmCost" class="cost">500 Beans</span> </td>
+					</tr>
+					<tr>
+						<td id="plantation" href="#" title="">Plantation<br /><span id="plantationCost" class="cost">1000 Beans</span> </td>
+					</tr>
+				</table>
+			</div>
+			<div id="Upgrades">
+				<table id="upgradesTable" class="shopTables">
+					<tr>
+						<td id="upgradedFarm" href="#" title="">Upgraded Farm<br /><span id="upgradedFarmCost" class="cost">2500 Beans</span> </td>
+					</tr>
+					<tr>
+						<td id="upgradedPlantation" href="#" title="">Upgraded Plantation<br /><span id="upgradedPlantationCost" class="cost">5000 Beans</span> </td>
+					</tr>
+				</table>
+			</div>
+			
+			<br />
+			
+			<input type="button" value="Purchase" id="storeBuyBtn"/>
+		</div>
+		
+		<div class="info">
+			<table>
+				<tr>
+					<td>Farms: <span id="farmSpan"></span></td>
+					<td>Plantations: <span id="plantationSpan"></td>
+					<td><span id="beansPerSecond"></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+
+</html>
