@@ -28,8 +28,10 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
-    if($user == '') {
-        $errorstr = $errorstr . 'incorrect info,';
+    if($user['id'] == '') {
+        echo('incorrect info, try again');
+        header("Refresh: 3; URL=http://localhost/ITS362ProjectRealReal/loginpage.php");
+	exit();
     } else { // no errors and login good
         // create session
         $_SESSION['id'] = $user['id'];
