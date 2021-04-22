@@ -4,7 +4,6 @@
 ?>
 <h2>Registation</h2>
 <?php
-	session_start();
 	require('config.inc.php');
 	require('../mysql.inc.php');
 	// insert into DB
