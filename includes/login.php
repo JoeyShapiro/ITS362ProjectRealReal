@@ -7,8 +7,7 @@
 
     // organize values
     foreach($nameValues as $name => $value) {
-        echo($name . ": " . $value . "<br />");
-
+    
         // validate for empty
         if($value == '') {
             $errorstr = $errorstr . 'missing field,';
@@ -34,8 +33,9 @@
     } else { // no errors and login good
         // create session
         $_SESSION['id'] = $user['id'];
-        echo($_SESSION['id']);
-        header('Location: http://project/index.php');
+        echo("Logic successfully, you will now be redirected to the main page.<br /><h3>Hello ".$username."</h3>");
+        header("Refresh: 3; URL=http://localhost/ITS362ProjectRealReal/index.php");
+	exit();
         // TODO find where to go
     }
 ?>
