@@ -1,5 +1,6 @@
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="css/styles.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         
 <script>
@@ -77,18 +78,19 @@
 	</div>
 
 	<div id="top-game2">
-		<table id="table-game2">
-            		<tr><th>User</th><th>Score</th></tr>
+		<table id="table-game2" cellspacing="3", cellpadding="3">
+            		<tr><th>Rank</th><th>User</th><th>Current Beans</th><th>Total Beans</th><th>Farms</th><th>Plantations</th><th>Upgraded Farms</th><th>Upgraded Plantations</th></tr>
 <?php
 			// get all scores of users from game 2
 			$gid = 2;
-			$stmt = $db->prepare("SELECT * FROM leaderboard WHERE gid=?");
+			$stmt = $db->prepare("SELECT * FROM beanClicker ORDER BY totalBeans desc");
 			$stmt->bind_param("i", $gid);
 			$stmt->execute();
 			$result = $stmt->get_result();
-
+			$rank = 1;
 			while($row = $result->fetch_assoc()) {
-				echo('<tr><td>' . $row['uid'] . '</td><td>' . $row['score'] . '</td></tr>');
+				echo('<tr><td>' . $rank . '</td><td>' . $row['username'] . '</td><td>' . $row['currentBeans'] . '</td><td>' . $row['totalBeans'] . '</td><td>' . $row['farms'] . '</td><td>' . $row['plantations'] . '</td><td>' . $row['upgradedFarms'] . '</td><td>' . $row['upgradedPlantations'] . '</td></tr>');
+				$rank++;
 			}
 ?>
 		</table>
