@@ -11,13 +11,20 @@ var active; // number of active fragments
 var tries; // allotted tries given to player
 var delimeter; // leniency of the pointer being in range
 var delta; // speed of pointer
+var gameover = false;
 
 // keyup maybe best to stop spam
 $(document).on('keyup', '', function(e) { // keyup keypress
     ctx.clearRect(0, 0, SIZE, SIZE);
     if (e.keyCode == 32) { // i think space center i think
-        if(tries <= 0)
+        if(tries <= 0) {
             console.log('gameover - FAIL');
+            gameover = true;
+            score = 0 + tries + active + delimeter + delta - (time / 100);
+            var form = document.getElementById("score");
+            form.value = score;
+            alert("score: " + score);
+        }
         console.log(pos);
         $(fragments).each(function (index) {
             var lower = (fragments[index].a) - delimeter;
@@ -65,9 +72,12 @@ function onLoad() {
 // function to update all attributes
 function update() {
     ctx.clearRect(0, 0, SIZE, SIZE);
-    time++;
-    //console.log(time);
-    pos+=delta;
+    if(!gameover) { // stops timer if game over
+        time++;
+        //console.log(time);
+        pos+=delta;
+    }
+    
     if(pos >= 360)
         pos = 0;
     theta = (pos/180) * Math.PI;
@@ -86,8 +96,13 @@ function update() {
             active++;
     })
     // check for WIN case
-    if(active == fragments.length) // if all of array + 1 for last
+    if(active == fragments.length) { // if all of array + 1 for last
         ctx.fillText('gameover - WIN', 640, 672);
+
+        gameover = true;
+        score = 10 + tries + active + delimeter + delta - time;
+        alert("score: " + score);
+    }
     // draw core
     ctx.arc(SIZE/2, SIZE/2, 16, 0, 2 * Math.PI);
     // think becuase total size equals 2 and 180 is half or something not sure geomitry

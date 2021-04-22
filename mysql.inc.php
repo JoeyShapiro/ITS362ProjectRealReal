@@ -1,8 +1,8 @@
 <?php
-    DEFINE('DB_USER', 'its362'); // root for you
-    DEFINE('DB_PASS', 'toor'); // dees for you
+    DEFINE('DB_USER', 'root'); // its362 for you
+    DEFINE('DB_PASS', 'dees'); // toor for you
     DEFINE('DB_HOST', 'localhost');
-    DEFINE('DB_NAME', 'FinalProject'); // project for you
+    DEFINE('DB_NAME', 'project'); // FinalProject for you :P
 
     $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
