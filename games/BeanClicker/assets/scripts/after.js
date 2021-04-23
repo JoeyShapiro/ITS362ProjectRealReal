@@ -120,15 +120,15 @@ function coffeeBeanShop(){
 	beanObject.coffeeBeansUsed++;
 	if(beanObject.coffeeBeansUsed == 1){
 		customAlert("achievement", "addictionBegins");
-		achievementsUnlocked["addictionBegins"] = true;
+		achievementsUnlocked["addictionBegins"] = 1;
+	}
+	if(beanObject.coffeeBeansUsed == 10){
+		customAlert("achievement", "coffeeDependent");
+		achievementsUnlocked["coffeeDependent"] = 1;
 	}
 	if(beanObject.coffeeBeansUsed == 20){
-		customAlert("achievement", "coffeeDependent");
-		achievementsUnlocked["coffeeDependent"] = true;
-	}
-	if(beanObject.coffeeBeansUsed == 50){
 		customAlert("achievement", "coffeeAddict");
-		achievementsUnlocked["coffeeAddict"] = true;
+		achievementsUnlocked["coffeeAddict"] = 1;
 	}
 	//-------------------------------------------------------------
 }
@@ -242,7 +242,7 @@ j(function() {
 	upgradedFarmTimer();
 	
 	j('#userinform').submit(function() {
-	    updateDB();
+	    updateVars();
 	    return true; // return false to cancel form action
 	});
 		
@@ -324,15 +324,15 @@ j(function() {
 		j("#beanImg").css("cursor", "grab");
 		//----------------Clicking Achievements---------------------------
 		if(beanObject.beansTotal == 100){
-			if(achievementsUnlocked["beans100"] == false){
+			if(achievementsUnlocked["beans100"] == 0){
 				customAlert("achievement", "beans100");
-				achievementsUnlocked["beans100"] = true;
+				achievementsUnlocked["beans100"] = 1;
 			}
 		}
 		if(beanObject.beansTotal == 1000){
-			if(achievementsUnlocked["beans1000"] == false){
+			if(achievementsUnlocked["beans1000"] == 0){
 				customAlert("achievement", "beans1000");
-				achievementsUnlocked["beans1000"] = true;
+				achievementsUnlocked["beans1000"] = 1;
 			}
 		}
 	});
