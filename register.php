@@ -1,11 +1,11 @@
 <?php
 // TODO fix this the nav acts funny in here
-//include('../html/header.html');
+include('header.php');
 ?>
 <h2>Registation</h2>
 <?php
-	require('config.inc.php');
-	require('../mysql.inc.php');
+	require('includes/config.inc.php');
+	require('mysql.inc.php');
 	// insert into DB
 	$nameValues = array();
 	if(isset($_POST['regsubmit'])) { // when value set
@@ -98,11 +98,11 @@
 	} else { // when sent from login page
         	echo('
 		    	<form action="register.php" method="POST">
-		        	<input type="text" name="username" placeholder="username" /><br/>
-		        	<input type="password" name="password" placeholder="password" /><br/>
-		        	<input type="password" name="conpass" placeholder="confirm password" /><br/>
-		        	<input type="text" name="email" placeholder="email" /><br/>
-		        	<input type="text" id="date" name="birth" placeholder="birthdate" /><br/>
+		        	<input type="text" name="username" placeholder="username" title="Please enter a username."/><br/>
+		        	<input type="password" name="password" placeholder="password" title="Please enter a password."/><br/>
+		        	<input type="password" name="conpass" placeholder="confirm password" title="Please confirm your password."/><br/>
+		        	<input type="email" name="email" placeholder="email" title="Please enter an email address."/><br/>
+		        	<input type="date" id="date" name="birth" placeholder="birthdate" title="Please enter a date."/><br/>
 		        	<input type="submit" id="regsubmit" name="regsubmit" value="Register" /><br/>
 		    	</form>
         	');

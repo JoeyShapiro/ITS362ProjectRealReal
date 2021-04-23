@@ -10,11 +10,13 @@
     </header>
 
     <nav>
-        <a href="index.php">Home</a> |
-        <a href="libpage.php">Games</a> |
-        <a href="leaders.php">Leaderboards</a> |
 <?php
 require('includes/config.inc.php');
+	echo('
+	<a href="http://'.BASE_URL.'index.php">Home</a> |
+        <a href="http://'.BASE_URL.'libpage.php">Games</a> |
+        <a href="http://'.BASE_URL.'leaders.php">Leaderboards</a> |
+	');
         if(isset($_SESSION['id'])){
         	echo('
 		<a href="http://'.BASE_URL.'logout.php">Logout</a>
