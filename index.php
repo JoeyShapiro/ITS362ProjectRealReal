@@ -50,7 +50,7 @@
 	echo('GLHF');
 ?>
 	</h4>
-</div>
+</div><br />
 
 <div id="top">
 	<ul>

@@ -1,8 +1,59 @@
+body {
+  background-color: skyblue;
+}
+
 h1 {
-    color: red;
+  color: red;
+}
+
+#gameSelection a:visited {
+ text-decoration: none; color:black;
+}
+#gameSelection a:hover {
+ text-decoration: none; color:black;
+}
+#gameSelection a:focus {
+ text-decoration: none; color:black;
+}
+#gameSelection a:hover, a:active {
+ text-decoration: none; color:black;
+}
+#gameSelection table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 table, th, tr, td{
-	border: 1px solid black;
-	text-align: center;
+  border: 1px solid black;
+  text-align: center;
+}
+
+#headerHeader {
+  padding: 3px;
+}
+
+#headerNav {
+  display: block;
+  padding: 8px 0px;
+  background-color: #00FFFF;
+  color: black;
+}
+
+#headerNav a {
+  display: inline;
+  color: black;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
+  border-right: 1px solid black;
+}
+
+#headerNav a:hover {
+  color: red;
+}
+
+#motd {
+  background-color: #1877F2;
+  padding: 3px;
 }
