@@ -85,7 +85,7 @@ h2{
 	border: 4px solid white;
 	position: absolute;
 	top: 2px;
-	right:138px;
+	right:2px;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 5px;
@@ -145,37 +145,6 @@ h2{
 
 #alertElement{
 	font-size: 16px;
-}
-
-.leaderboardBtn {
-	border: 4px solid white;
-	position: absolute;
-	top: 2;
-	right: 2;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	background-color: lightgray;
-}
-
-.leaderboardBtn:hover {
-	color: white;
-	cursor: pointer;
-}
-
-.leaderboard {
-	display: none;
-	text-align: center;
-	border: 4px solid white;
-	position: absolute;
-	width: 100%;
-	top: 30;
-	left: -4;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	background-color: lightgray;
-	overflow: hidden;
 }
 
 div.store {

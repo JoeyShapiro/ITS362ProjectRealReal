@@ -1,7 +1,6 @@
 ///////////////////////////MISC//////////////////////////////////////////////
 function updateCounters(){
 	j("#beanCount").text("Beans: " + beanObject.beanCounter);
-	j(".leaderboard").text(beanObject.username + ":" + beanObject.beansTotal);
 	j("#farmSpan").text(beanObject.farms + beanObject.upgradedFarms);
 	j("#plantationSpan").text(beanObject.plantations + beanObject.upgradedPlantations);
 	j("#beansPerSecond").text("Beans per second: "+(beanObject.farms*0.1+beanObject.plantations*0.3+beanObject.upgradedFarms*0.5+beanObject.upgradedPlantations));
@@ -246,11 +245,6 @@ j(function() {
 	    return true; // return false to cancel form action
 	});
 		
-	//---------------------------------------------------------------------
-	//Leaderboard button
-	j(".leaderboardBtn").on("click", function() {
-		j(".leaderboard").toggle("slide", {direction: "up"});
-	});
 	//---------------------------------------------------------------------
 	//Open stats page when button clicked
 	j(".statsBtn").on("click", function() {
