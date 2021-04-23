@@ -78,7 +78,7 @@
 			$_SESSION['id'] = $user['id'];
 			
 			echo('<h3>Enjoy The Games</h3>');
-			echo('You will now be redirected to login');
+			echo('You will now be redirected to the main page');
 			// redirect to login
 			$location = 'http://' . BASE_URL . 'index.php';
 			header("Refresh: 3; URL=$location"); // localhost/ITS362ProjectRealReal for you

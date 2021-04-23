@@ -2,7 +2,7 @@ h1 {
     color: red;
 }
 
-div.top-game3, table, th, tr, td{
+table, th, tr, td{
 	border: 1px solid black;
 	text-align: center;
 }

@@ -42,7 +42,7 @@
 	<h3>Message of the Day:</h3>
 	<h4>
 <?php
-	echo('Today is ' . date('l jS \of F Y h:i:s A') . '.');
+	echo('Today is ' . date('l F jS, Y') . '. The current time is '. date('h:i:s A') . '.');
 ?>
 	</h4>
 	<h4>
@@ -59,7 +59,7 @@
 		<li><a href="#top-game3">Game 3</a></li>
 	</ul>
 	<div id="top-game1">
-		<table id="table-game1">
+		<table id="table-game1" cellspacing="3", cellpadding="5">
     			<tr><th>User</th><th>Score</th></tr>
 <?php
 			// get all scores of users from game 1
@@ -77,7 +77,7 @@
 	</div>
 
 	<div id="top-game2">
-		<table id="table-game2" cellspacing="3", cellpadding="3">
+		<table id="table-game2" cellspacing="3", cellpadding="5">
             		<tr><th>Rank</th><th>User</th><th>Current Beans</th><th>Total Beans</th><th>Farms</th><th>Plantations</th><th>Upgraded Farms</th><th>Upgraded Plantations</th></tr>
 <?php
 			// get all scores of users from game 2
@@ -96,7 +96,7 @@
 	</div>
 
 	<div id="top-game3">
-		<table id="table-game3">
+		<table id="table-game3" cellspacing="3", cellpadding="5">
 			<tr><th>User</th><th>Score</th></tr>
 <?php
 			// get all scores of users from game 3
