@@ -36,7 +36,7 @@
     } else { // no errors and login good
         // create session
         $_SESSION['id'] = $user['id'];
-        echo("Logic successfully, you will now be redirected to the main page.<br /><h3>Hello ".$username."</h3>");
+        echo("Login successfully, you will now be redirected to the main page.<br /><h3>Hello ".$username."</h3>");
         $location = 'http://' . BASE_URL . 'index.php';
         header("Refresh: 3; URL=$location"); // change in config.inc.php for you
 	exit();

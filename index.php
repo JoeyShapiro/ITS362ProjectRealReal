@@ -1,6 +1,5 @@
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="css/styles.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         
 <script>
@@ -13,7 +12,7 @@
 	date_default_timezone_set('America/Chicago');
 	require('includes/config.inc.php');
 	require('mysql.inc.php');
-	include('html/header.html');
+	include('header.php');
 
 	if(isset($_SESSION['id'])) {
 		// get user

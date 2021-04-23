@@ -1,6 +1,6 @@
 <?php
     require('includes/config.inc.php');
-    include('html/header.html');
+    include('header.php');
     require('html/login.html');
     require('html/footer.html');
 ?>
