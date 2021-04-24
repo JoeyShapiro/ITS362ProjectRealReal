@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sports Trivia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<h2>Sports Trivia</h2>
+	<h4>Welcome to sports trivia! There are 10 questions for you to answer. Each correct answer is worth 10 points.
+	Incorrect answers are worth 0 points. Your total number of points will be displayed in the end.</h4>
+	
+    <div id="container">
+        <div id="start">Start</div>
+        <div id="quiz" style="display: none">
+            <div id="question"></div>
+            <div id="choices">
+                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+            </div>
+            <div id="progress"></div>
+        </div>
+        <div id="scoreContainer" style="display: none"></div>
+    </div>
+    <script src="quiz.js"></script>
+</body>
+</html>
