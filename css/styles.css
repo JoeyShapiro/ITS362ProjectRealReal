@@ -23,8 +23,20 @@ h1 {
   margin-right: auto;
   width: 100%;
 }
+#gameSelection table, #gameSelection th, #gameSelection tr, #gameSelection td{
+  border: 1px solid black;
+  text-align: center;
+}
 
-table, th, tr, td{
+#top-game1 table, #top-game1 th, #top-game1 tr, #top-game1 td{
+  border: 1px solid black;
+  text-align: center;
+}
+#top-game2 table, #top-game2 th, #top-game2 tr, #top-game2 td{
+  border: 1px solid black;
+  text-align: center;
+}
+#top-game3 table, #top-game3 th, #top-game3 tr, #top-game3 td{
   border: 1px solid black;
   text-align: center;
 }
@@ -34,10 +46,11 @@ table, th, tr, td{
 }
 
 #headerNav {
-  display: block;
+  display: inline;
   padding: 8px 0px;
-  background-color: #00FFFF;
+  background-color: orange;
   color: black;
+  border: 1px solid black;
 }
 
 #headerNav a {
@@ -49,11 +62,16 @@ table, th, tr, td{
   border-right: 1px solid black;
 }
 
+#headerNav a:last-child {
+  border-right: 0px;
+}
+
 #headerNav a:hover {
   color: red;
 }
 
 #motd {
   background-color: #1877F2;
-  padding: 3px;
+  padding-left: 10px;
+  border: 2px solid black;
 }

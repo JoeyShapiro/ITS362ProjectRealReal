@@ -60,7 +60,7 @@
 	</ul>
 	<div id="top-game1">
 		<table id="table-game1" cellspacing="3", cellpadding="5">
-    			<tr><th>User</th><th>Score</th></tr>
+    			<tr><th>Rank</th><th>User</th><th>Score</th></tr>
 <?php
 			// get all scores of users from game 1
 			$gid = 1;
@@ -68,9 +68,10 @@
 			$stmt->bind_param("i", $gid);
 			$stmt->execute();
 			$result = $stmt->get_result();
-
+			$rank = 1;
 			while($row = $result->fetch_assoc()) {
-				echo('<tr><td>' . $row['uid'] . '</td><td>' . $row['score'] . '</td></tr>');
+				echo('<tr><td>' . $rank . '</td><td>' . $row['uid'] . '</td><td>' . $row['score'] . '</td></tr>');
+				$rank++;
 			}
 ?>
         	</table>

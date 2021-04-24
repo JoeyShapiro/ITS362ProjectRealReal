@@ -17,7 +17,7 @@ include('header.php');
 		   		// validate
 			    	// check for empty string
 			    	if($value == '') {
-					$errorstr = $errorstr . $name . ' missing field,';
+					$errorstr = $errorstr . $name . ' missing field, ';
 			    	}
 
 			    	// set the value to variable
@@ -53,7 +53,7 @@ include('header.php');
 		$result = $stmt->get_result();
 		$user = $result->fetch_assoc();
 		if($user != '') {
-			$errorstr = $errorstr . ' user with name or email,';
+			$errorstr = $errorstr . ' user with name or email';
 		}
 		
 		// hash password
@@ -91,19 +91,21 @@ include('header.php');
 		    	echo($errorstr);
 		    	echo('
 				<form action="register.php" method="GET">
-			    	<input type="submit" value="Re-Register :(">
+			    	<input type="submit" value="Try Again :(">
 				</form>
 		    	');
 		}
 	} else { // when sent from login page
         	echo('
 		    	<form action="register.php" method="POST">
-		        	<input type="text" name="username" placeholder="username" title="Please enter a username."/><br/>
-		        	<input type="password" name="password" placeholder="password" title="Please enter a password."/><br/>
-		        	<input type="password" name="conpass" placeholder="confirm password" title="Please confirm your password."/><br/>
-		        	<input type="email" name="email" placeholder="email" title="Please enter an email address."/><br/>
-		        	<input type="date" id="date" name="birth" placeholder="birthdate" title="Please enter a date."/><br/>
-		        	<input type="submit" id="regsubmit" name="regsubmit" value="Register" /><br/>
+		    	<table style="border: 0px;">
+		    	<tr><td>Username:</td><td><input type="text" name="username" placeholder="username" title="Please enter a username."/></td></tr>
+		        <tr><td>Password:</td><td><input type="password" name="password" placeholder="password" title="Please enter a password."/></td></tr>
+		        <tr><td>Password:</td><td><input type="password" name="conpass" placeholder="confirm password" title="Please confirm your password."/></td></tr>
+		        <tr><td>Email:</td><td><input type="email" name="email" placeholder="email" title="Please enter an email address."/></td></tr>
+		        <tr><td>DOB:</td><td><input type="date" id="date" name="birth" placeholder="birthdate" title="Please enter a date." style="width: 100%"/></td></tr>
+		        <tr><td colspan="2" style="text-align: center"><input type="submit" id="regsubmit" name="regsubmit" value="Register"/></td></tr>
+		        </table>
 		    	</form>
         	');
     	}
