@@ -20,14 +20,14 @@ require('includes/config.inc.php');
         if(isset($_SESSION['id'])){
         	echo('
 		<a href="http://'.BASE_URL.'logout.php">Log Out</a>
-		</nav><br />
+		</nav><br /><br />
 		<body>
         	');
         }
         else {
         	echo('
         	<a href="http://'.BASE_URL.'loginpage.php">Login</a>
-   		 </nav><br />
+   		 </nav><br /><br />
    		 <body>
    		 ');
 	 }
