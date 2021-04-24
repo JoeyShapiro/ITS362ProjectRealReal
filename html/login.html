@@ -1,7 +1,9 @@
 <form action="includes/login.php" method="POST">
-	<input type="text" name="username" placeholder="username" title="Please enter your username."><br/>
-	<input type="password" name="password" placeholder="password" title="Please enter your password."><br/>
-	<input type="submit" name="loginsubmit" value="Login"><br/>
+	<table>
+	<tr><td>Username:</td><td><input type="text" name="username" placeholder="username" title="Please enter your username."></td></tr>
+	<tr><td>Password:</td><td><input type="password" name="password" placeholder="password" title="Please enter your password."></td></tr>
+	<tr><td colspan="2"><input type="submit" name="loginsubmit" value="Login"></td></tr>
+	</table>
 </form>
 <form action="register.php" method="GET">
 	<input type="submit" value="Or Register">
