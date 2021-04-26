@@ -1,6 +1,6 @@
 <?php
     define('MYSQL', 'mysql.inc.php');
-    define('BASE_URL', 'project/'); // localhost/ITS362ProjectRealReal/ for you :P
+    define('BASE_URL', 'localhost/ITS362ProjectRealReal/'); // project/ for you :P
 
     session_start();
 ?>
