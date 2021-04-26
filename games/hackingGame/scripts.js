@@ -101,6 +101,8 @@ function update() {
 
         gameover = true;
         score = 10 + tries + active + delimeter + delta - time;
+        var form = document.getElementById("score");
+        form.value = score;
         alert("score: " + score);
     }
     // draw core

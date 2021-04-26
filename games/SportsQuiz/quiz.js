@@ -176,4 +176,7 @@ function displayScore(){
     const finalScore = score;
    
     scoreDiv.innerHTML += "<p>You scored "+ finalScore +" points</p>";
+    // added sql for score
+    var form = document.getElementById("score");
+    form.value = finalScore;
 }
