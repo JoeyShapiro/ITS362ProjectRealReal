@@ -110,6 +110,10 @@ h2{
 	display: none;
 }
 
+.statsContent {
+	overflow: scroll;
+}
+
 #statsRefresh:hover {
 	cursor: pointer;
 }

@@ -17,7 +17,12 @@ function bounce(times, distance) {
 */
 
 function refreshStats() {
-	j(".statsContent").html("<p id='statsTitle' style='text-align: center; font-weight: bold;'>Stats</p><br /> User: " + beanObject.username + "<br /><br /> Current Beans: " + beanObject.beanCounter + "<br /><br /> Total Beans: " + beanObject.beansTotal + "<br /><br /> Beans Per Second: " + (beanObject.farms*0.1+beanObject.plantations*0.3+beanObject.upgradedFarms*0.5+beanObject.upgradedPlantations) + "<br /><br /> Farms: " + beanObject.farms + "<br /><br /> Plantations: " + beanObject.plantations + "<br /><br /> Upgraded Farms: " + beanObject.upgradedFarms + "<br /><br /> Upgraded Plantations: " + beanObject.upgradedPlantations);
+	j(".statsContent").html("<p id='statsTitle' style='text-align: center; font-weight: bold;'>Stats</p><br /> User: " + beanObject.username + "<br /><br /> Current Beans: " + beanObject.beanCounter + "<br /><br /> Total Beans: " + beanObject.beansTotal + "<br /><br /> Beans Per Second: " + (beanObject.farms*0.1+beanObject.plantations*0.3+beanObject.upgradedFarms*0.5+beanObject.upgradedPlantations) + "<br /><br /> Farms: " + beanObject.farms + "<br /><br /> Plantations: " + beanObject.plantations + "<br /><br /> Upgraded Farms: " + beanObject.upgradedFarms + "<br /><br /> Upgraded Plantations: " + beanObject.upgradedPlantations + "<br /><br />Achievements Unlocked:");
+	Object.keys(achievementsUnlocked).forEach(key => {
+		if(achievementsUnlocked[key] == 1){
+			j(".statsContent").append("<br /><br />"+key);		
+		}
+	});
 }
 
 ///////////////////////////////////////////SHOP////////////////////////////////////////////////////////

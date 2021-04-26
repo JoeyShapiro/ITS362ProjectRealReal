@@ -82,9 +82,7 @@
             		<tr><th>Rank</th><th>User</th><th>Current Beans</th><th>Total Beans</th><th>Farms</th><th>Plantations</th><th>Upgraded Farms</th><th>Upgraded Plantations</th></tr>
 <?php
 			// get all scores of users from game 2
-			$gid = 2;
 			$stmt = $db->prepare("SELECT * FROM beanClicker ORDER BY totalBeans desc");
-			$stmt->bind_param("i", $gid);
 			$stmt->execute();
 			$result = $stmt->get_result();
 			$rank = 1;
