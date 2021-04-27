@@ -1,0 +1,969 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.6deb5ubuntu0.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Apr 26, 2021 at 10:27 PM
+-- Server version: 5.7.33-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `FinalProject`
+--
+CREATE DATABASE IF NOT EXISTS `FinalProject` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `FinalProject`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `beanAchievements`
+--
+
+CREATE TABLE `beanAchievements` (
+  `username` varchar(20) NOT NULL,
+  `beans100` tinyint(1) NOT NULL DEFAULT '0',
+  `beans1000` tinyint(1) NOT NULL DEFAULT '0',
+  `addictionBegins` tinyint(1) NOT NULL DEFAULT '0',
+  `coffeeDependent` tinyint(1) NOT NULL DEFAULT '0',
+  `coffeeAddict` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `beanAchievements`
+--
+
+INSERT INTO `beanAchievements` (`username`, `beans100`, `beans1000`, `addictionBegins`, `coffeeDependent`, `coffeeAddict`) VALUES
+('test', 1, 0, 1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `beanClicker`
+--
+
+CREATE TABLE `beanClicker` (
+  `username` varchar(20) NOT NULL,
+  `currentBeans` float NOT NULL DEFAULT '0',
+  `totalBeans` float NOT NULL DEFAULT '0',
+  `farms` int(255) NOT NULL DEFAULT '0',
+  `plantations` int(255) NOT NULL DEFAULT '0',
+  `upgradedFarms` int(255) NOT NULL DEFAULT '0',
+  `upgradedPlantations` int(255) NOT NULL DEFAULT '0',
+  `coffeeBeansUsed` int(255) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `beanClicker`
+--
+
+INSERT INTO `beanClicker` (`username`, `currentBeans`, `totalBeans`, `farms`, `plantations`, `upgradedFarms`, `upgradedPlantations`, `coffeeBeansUsed`) VALUES
+('test', 50, 100, 0, 0, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `games`
+--
+
+CREATE TABLE `games` (
+  `id` int(8) NOT NULL,
+  `name` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `games`
+--
+
+INSERT INTO `games` (`id`, `name`) VALUES
+(1, 'HackerGame'),
+(2, 'BeanClicker');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leaderboard`
+--
+
+CREATE TABLE `leaderboard` (
+  `id` int(8) NOT NULL,
+  `gid` int(8) NOT NULL,
+  `uid` int(8) NOT NULL,
+  `score` int(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `leaderboard`
+--
+
+INSERT INTO `leaderboard` (`id`, `gid`, `uid`, `score`) VALUES
+(1, 1, 20, -1),
+(2, 1, 24, 0),
+(3, 1, 24, 0),
+(4, 3, 24, 40);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(8) NOT NULL,
+  `username` varchar(16) NOT NULL,
+  `password` varbinary(32) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `birth` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `birth`) VALUES
+(1, 'admin', 0x61646d696e, '', ''),
+(3, 'yoey', 0x373cc3eccdf4129918c3d1dfa62db75816316388989f53f62213f569f290198f, 'yoey', 'test'),
+(21, 'ryan', 0x65f092b63d9c9b97d8ddbf649cd35d76c838443349db66719ffdeb015a582f81, 'ryan', 'ryan'),
+(22, 'test2', 0xb4a22a59d74fa052f113e16d53f0321d2a107ce9a0c1cc057ef0dff971b71c01, 'test2', 'test2'),
+(24, 'test', 0x65f092b63d9c9b97d8ddbf649cd35d76c838443349db66719ffdeb015a582f81, 'test@gmail.com', '2021-04-26');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `beanAchievements`
+--
+ALTER TABLE `beanAchievements`
+  ADD KEY `userID` (`username`);
+
+--
+-- Indexes for table `beanClicker`
+--
+ALTER TABLE `beanClicker`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `games`
+--
+ALTER TABLE `games`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `leaderboard`
+--
+ALTER TABLE `leaderboard`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `games`
+--
+ALTER TABLE `games`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `leaderboard`
+--
+ALTER TABLE `leaderboard`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `beanAchievements`
+--
+ALTER TABLE `beanAchievements`
+  ADD CONSTRAINT `beanAchievements_ibfk_1` FOREIGN KEY (`username`) REFERENCES `beanClicker` (`username`);
+--
+-- Database: `MVC362DB`
+--
+CREATE DATABASE IF NOT EXISTS `MVC362DB` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `MVC362DB`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Users`
+--
+
+CREATE TABLE `Users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `userName` varchar(30) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `pass` varbinary(32) DEFAULT NULL,
+  `firstName` varchar(20) NOT NULL,
+  `lastName` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Users`
+--
+
+INSERT INTO `Users` (`id`, `userName`, `email`, `pass`, `firstName`, `lastName`) VALUES
+(5, 'its362', 'email@gmail.com', 0x746f6f72, 'Ryan', 'Frederick');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Users`
+--
+ALTER TABLE `Users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Users`
+--
+ALTER TABLE `Users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;--
+-- Database: `lab9`
+--
+CREATE DATABASE IF NOT EXISTS `lab9` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `lab9`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assignments`
+--
+
+CREATE TABLE `assignments` (
+  `id` int(3) NOT NULL,
+  `assignment` varchar(20) NOT NULL,
+  `value` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `assignments`
+--
+
+INSERT INTO `assignments` (`id`, `assignment`, `value`) VALUES
+(1, 'participation1', 5),
+(1, 'participation2', 5),
+(1, 'participation3', 5),
+(1, 'participation4', 5),
+(1, 'participation5', 5),
+(1, 'participation6', 5),
+(1, 'participation7', 5),
+(1, 'participation8', 5),
+(1, 'participation9', 5),
+(1, 'participation10', 5),
+(1, 'participation11', 5),
+(1, 'participation12', 5),
+(1, 'participation13', 5),
+(1, 'participation14', 5),
+(1, 'participation15', 5),
+(1, 'lab1', 25),
+(1, 'lab2', 25),
+(1, 'lab3', 25),
+(1, 'lab4', 25),
+(1, 'lab5', 25),
+(1, 'lab6', 25),
+(1, 'lab7', 25),
+(1, 'lab8', 25),
+(1, 'lab9', 25),
+(1, 'lab10', 25),
+(1, 'quiz1', 10),
+(1, 'quiz2', 10),
+(1, 'quiz3', 10),
+(1, 'quiz4', 10),
+(1, 'quiz5', 10),
+(1, 'quiz6', 10),
+(1, 'quiz7', 10),
+(1, 'quiz8', 10),
+(1, 'quiz9', 10),
+(1, 'quiz10', 10),
+(1, 'exam1', 100),
+(1, 'exam2', 100),
+(1, 'project1', 100),
+(1, 'extracredit1', 25),
+(2, 'participation1', 5),
+(2, 'participation2', 5),
+(2, 'participation3', 5),
+(2, 'participation4', 5),
+(2, 'participation5', 5),
+(2, 'participation6', 5),
+(2, 'participation7', 5),
+(2, 'participation8', 5),
+(2, 'participation9', 5),
+(2, 'participation10', 5),
+(2, 'participation11', 5),
+(2, 'participation12', 5),
+(2, 'participation13', 5),
+(2, 'participation14', 5),
+(2, 'participation15', 5),
+(2, 'lab1', 0),
+(2, 'lab2', 0),
+(2, 'lab3', 0),
+(2, 'lab4', 0),
+(2, 'lab5', 0),
+(2, 'lab6', 0),
+(2, 'lab7', 0),
+(2, 'lab8', 0),
+(2, 'lab9', 0),
+(2, 'lab10', 0),
+(2, 'quiz1', 10),
+(2, 'quiz2', 10),
+(2, 'quiz3', 10),
+(2, 'quiz4', 10),
+(2, 'quiz5', 10),
+(2, 'quiz6', 10),
+(2, 'quiz7', 10),
+(2, 'quiz8', 10),
+(2, 'quiz9', 10),
+(2, 'quiz10', 10),
+(2, 'exam1', 100),
+(2, 'exam2', 100),
+(2, 'project1', 100),
+(2, 'extracredit1', 25),
+(3, 'participation1', 5),
+(3, 'participation2', 5),
+(3, 'participation3', 5),
+(3, 'participation4', 5),
+(3, 'participation5', 5),
+(3, 'participation6', 5),
+(3, 'participation7', 5),
+(3, 'participation8', 5),
+(3, 'participation9', 5),
+(3, 'participation10', 5),
+(3, 'participation11', 5),
+(3, 'participation12', 5),
+(3, 'participation13', 5),
+(3, 'participation14', 5),
+(3, 'participation15', 5),
+(3, 'lab1', 25),
+(3, 'lab2', 25),
+(3, 'lab3', 25),
+(3, 'lab4', 25),
+(3, 'lab5', 25),
+(3, 'lab6', 25),
+(3, 'lab7', 25),
+(3, 'lab8', 25),
+(3, 'lab9', 25),
+(3, 'lab10', 25),
+(3, 'quiz1', 0),
+(3, 'quiz2', 0),
+(3, 'quiz3', 0),
+(3, 'quiz4', 0),
+(3, 'quiz5', 0),
+(3, 'quiz6', 0),
+(3, 'quiz7', 0),
+(3, 'quiz8', 0),
+(3, 'quiz9', 0),
+(3, 'quiz10', 0),
+(3, 'exam1', 0),
+(3, 'exam2', 0),
+(3, 'project1', 0),
+(3, 'extracredit1', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grades`
+--
+
+CREATE TABLE `grades` (
+  `id` int(3) NOT NULL,
+  `student` varchar(20) NOT NULL,
+  `grade` int(3) DEFAULT NULL,
+  `lettergrade` char(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `grades`
+--
+
+INSERT INTO `grades` (`id`, `student`, `grade`, `lettergrade`) VALUES
+(1, 'test1', 105, 'A'),
+(2, 'test2', 75, 'C'),
+(3, 'test3', 40, 'F');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `assignments`
+--
+ALTER TABLE `assignments`
+  ADD KEY `fk_assignments_studentid` (`id`);
+
+--
+-- Indexes for table `grades`
+--
+ALTER TABLE `grades`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `grades`
+--
+ALTER TABLE `grades`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `assignments`
+--
+ALTER TABLE `assignments`
+  ADD CONSTRAINT `fk_assignments_studentid` FOREIGN KEY (`id`) REFERENCES `grades` (`id`);
+--
+-- Database: `lecture362DB`
+--
+CREATE DATABASE IF NOT EXISTS `lecture362DB` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `lecture362DB`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `authors`
+--
+
+CREATE TABLE `authors` (
+  `authorid` int(11) NOT NULL,
+  `name` varchar(55) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `authors`
+--
+
+INSERT INTO `authors` (`authorid`, `name`) VALUES
+(1, 'J.R.R. Tolkien'),
+(2, 'Alex Haley'),
+(3, 'Tom Clancy'),
+(4, 'Mark Twain');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `books`
+--
+
+CREATE TABLE `books` (
+  `bookid` int(11) NOT NULL,
+  `authorid` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(55) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`bookid`, `authorid`, `title`) VALUES
+(1, 1, 'The Two Towers'),
+(2, 1, 'The Return of the King'),
+(3, 1, 'The Hobbit');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `authors`
+--
+ALTER TABLE `authors`
+  ADD PRIMARY KEY (`authorid`);
+
+--
+-- Indexes for table `books`
+--
+ALTER TABLE `books`
+  ADD PRIMARY KEY (`bookid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `authors`
+--
+ALTER TABLE `authors`
+  MODIFY `authorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `books`
+--
+ALTER TABLE `books`
+  MODIFY `bookid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;--
+-- Database: `phpmyadmin`
+--
+CREATE DATABASE IF NOT EXISTS `phpmyadmin` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `phpmyadmin`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__bookmark`
+--
+
+CREATE TABLE `pma__bookmark` (
+  `id` int(11) NOT NULL,
+  `dbase` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `user` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `label` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `query` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Bookmarks';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__central_columns`
+--
+
+CREATE TABLE `pma__central_columns` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `col_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `col_type` varchar(64) COLLATE utf8_bin NOT NULL,
+  `col_length` text COLLATE utf8_bin,
+  `col_collation` varchar(64) COLLATE utf8_bin NOT NULL,
+  `col_isNull` tinyint(1) NOT NULL,
+  `col_extra` varchar(255) COLLATE utf8_bin DEFAULT '',
+  `col_default` text COLLATE utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Central list of columns';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__column_info`
+--
+
+CREATE TABLE `pma__column_info` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `column_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `comment` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `mimetype` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `input_transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `input_transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Column information for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__designer_settings`
+--
+
+CREATE TABLE `pma__designer_settings` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `settings_data` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Settings related to Designer';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__export_templates`
+--
+
+CREATE TABLE `pma__export_templates` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `export_type` varchar(10) COLLATE utf8_bin NOT NULL,
+  `template_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `template_data` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved export templates';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__favorite`
+--
+
+CREATE TABLE `pma__favorite` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `tables` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Favorite tables';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__history`
+--
+
+CREATE TABLE `pma__history` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `sqlquery` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='SQL history for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__navigationhiding`
+--
+
+CREATE TABLE `pma__navigationhiding` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `item_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `item_type` varchar(64) COLLATE utf8_bin NOT NULL,
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Hidden items of navigation tree';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__pdf_pages`
+--
+
+CREATE TABLE `pma__pdf_pages` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `page_nr` int(10) UNSIGNED NOT NULL,
+  `page_descr` varchar(50) CHARACTER SET utf8 NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='PDF relation pages for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__recent`
+--
+
+CREATE TABLE `pma__recent` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `tables` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
+
+--
+-- Dumping data for table `pma__recent`
+--
+
+INSERT INTO `pma__recent` (`username`, `tables`) VALUES
+('its362', '[{\"db\":\"FinalProject\",\"table\":\"beanAchievements\"},{\"db\":\"FinalProject\",\"table\":\"beanClicker\"},{\"db\":\"FinalProject\",\"table\":\"users\"},{\"db\":\"FinalProject\",\"table\":\"games\"},{\"db\":\"FinalProject\",\"table\":\"leaderboard\"},{\"db\":\"lab9\",\"table\":\"assignments\"},{\"db\":\"lab9\",\"table\":\"grades\"},{\"db\":\"lab9\",\"table\":\"students\"},{\"db\":\"lab9\",\"table\":\"lab9\"},{\"db\":\"INFORMATION_SCHEMA\",\"table\":\"TABLES\"}]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__relation`
+--
+
+CREATE TABLE `pma__relation` (
+  `master_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `master_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `master_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `foreign_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `foreign_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `foreign_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__savedsearches`
+--
+
+CREATE TABLE `pma__savedsearches` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `search_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `search_data` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved searches';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__table_coords`
+--
+
+CREATE TABLE `pma__table_coords` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `pdf_page_number` int(11) NOT NULL DEFAULT '0',
+  `x` float UNSIGNED NOT NULL DEFAULT '0',
+  `y` float UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for phpMyAdmin PDF output';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__table_info`
+--
+
+CREATE TABLE `pma__table_info` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `display_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table information for phpMyAdmin';
+
+--
+-- Dumping data for table `pma__table_info`
+--
+
+INSERT INTO `pma__table_info` (`db_name`, `table_name`, `display_field`) VALUES
+('lab9', 'assignments', 'id');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__table_uiprefs`
+--
+
+CREATE TABLE `pma__table_uiprefs` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `prefs` text COLLATE utf8_bin NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__tracking`
+--
+
+CREATE TABLE `pma__tracking` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `version` int(10) UNSIGNED NOT NULL,
+  `date_created` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  `schema_snapshot` text COLLATE utf8_bin NOT NULL,
+  `schema_sql` text COLLATE utf8_bin,
+  `data_sql` longtext COLLATE utf8_bin,
+  `tracking` set('UPDATE','REPLACE','INSERT','DELETE','TRUNCATE','CREATE DATABASE','ALTER DATABASE','DROP DATABASE','CREATE TABLE','ALTER TABLE','RENAME TABLE','DROP TABLE','CREATE INDEX','DROP INDEX','CREATE VIEW','ALTER VIEW','DROP VIEW') COLLATE utf8_bin DEFAULT NULL,
+  `tracking_active` int(1) UNSIGNED NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Database changes tracking for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__userconfig`
+--
+
+CREATE TABLE `pma__userconfig` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `config_data` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
+
+--
+-- Dumping data for table `pma__userconfig`
+--
+
+INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
+('its362', '2021-02-28 23:50:34', '{\"collation_connection\":\"utf8mb4_unicode_ci\"}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__usergroups`
+--
+
+CREATE TABLE `pma__usergroups` (
+  `usergroup` varchar(64) COLLATE utf8_bin NOT NULL,
+  `tab` varchar(64) COLLATE utf8_bin NOT NULL,
+  `allowed` enum('Y','N') COLLATE utf8_bin NOT NULL DEFAULT 'N'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User groups with configured menu items';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__users`
+--
+
+CREATE TABLE `pma__users` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `usergroup` varchar(64) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Users and their assignments to user groups';
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `pma__bookmark`
+--
+ALTER TABLE `pma__bookmark`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pma__central_columns`
+--
+ALTER TABLE `pma__central_columns`
+  ADD PRIMARY KEY (`db_name`,`col_name`);
+
+--
+-- Indexes for table `pma__column_info`
+--
+ALTER TABLE `pma__column_info`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`);
+
+--
+-- Indexes for table `pma__designer_settings`
+--
+ALTER TABLE `pma__designer_settings`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__export_templates`
+--
+ALTER TABLE `pma__export_templates`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `u_user_type_template` (`username`,`export_type`,`template_name`);
+
+--
+-- Indexes for table `pma__favorite`
+--
+ALTER TABLE `pma__favorite`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__history`
+--
+ALTER TABLE `pma__history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`username`,`db`,`table`,`timevalue`);
+
+--
+-- Indexes for table `pma__navigationhiding`
+--
+ALTER TABLE `pma__navigationhiding`
+  ADD PRIMARY KEY (`username`,`item_name`,`item_type`,`db_name`,`table_name`);
+
+--
+-- Indexes for table `pma__pdf_pages`
+--
+ALTER TABLE `pma__pdf_pages`
+  ADD PRIMARY KEY (`page_nr`),
+  ADD KEY `db_name` (`db_name`);
+
+--
+-- Indexes for table `pma__recent`
+--
+ALTER TABLE `pma__recent`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__relation`
+--
+ALTER TABLE `pma__relation`
+  ADD PRIMARY KEY (`master_db`,`master_table`,`master_field`),
+  ADD KEY `foreign_field` (`foreign_db`,`foreign_table`);
+
+--
+-- Indexes for table `pma__savedsearches`
+--
+ALTER TABLE `pma__savedsearches`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `u_savedsearches_username_dbname` (`username`,`db_name`,`search_name`);
+
+--
+-- Indexes for table `pma__table_coords`
+--
+ALTER TABLE `pma__table_coords`
+  ADD PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`);
+
+--
+-- Indexes for table `pma__table_info`
+--
+ALTER TABLE `pma__table_info`
+  ADD PRIMARY KEY (`db_name`,`table_name`);
+
+--
+-- Indexes for table `pma__table_uiprefs`
+--
+ALTER TABLE `pma__table_uiprefs`
+  ADD PRIMARY KEY (`username`,`db_name`,`table_name`);
+
+--
+-- Indexes for table `pma__tracking`
+--
+ALTER TABLE `pma__tracking`
+  ADD PRIMARY KEY (`db_name`,`table_name`,`version`);
+
+--
+-- Indexes for table `pma__userconfig`
+--
+ALTER TABLE `pma__userconfig`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__usergroups`
+--
+ALTER TABLE `pma__usergroups`
+  ADD PRIMARY KEY (`usergroup`,`tab`,`allowed`);
+
+--
+-- Indexes for table `pma__users`
+--
+ALTER TABLE `pma__users`
+  ADD PRIMARY KEY (`username`,`usergroup`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pma__bookmark`
+--
+ALTER TABLE `pma__bookmark`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pma__column_info`
+--
+ALTER TABLE `pma__column_info`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pma__export_templates`
+--
+ALTER TABLE `pma__export_templates`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pma__history`
+--
+ALTER TABLE `pma__history`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pma__pdf_pages`
+--
+ALTER TABLE `pma__pdf_pages`
+  MODIFY `page_nr` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pma__savedsearches`
+--
+ALTER TABLE `pma__savedsearches`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
