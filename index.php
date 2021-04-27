@@ -64,7 +64,7 @@
 <?php
 			// get all scores of users from game 1
 			$gid = 1;
-			$stmt = $db->prepare("SELECT * FROM leaderboard WHERE gid=?");
+			$stmt = $db->prepare("SELECT * FROM leaderboard WHERE gid=? ORDER BY score desc");
 			$stmt->bind_param("i", $gid);
 			$stmt->execute();
 			$result = $stmt->get_result();
@@ -87,7 +87,7 @@
 			$result = $stmt->get_result();
 			$rank = 1;
 			while($row = $result->fetch_assoc()) {
-				echo('<tr><td>' . $rank . '</td><td>' . $row['username'] . '</td><td>' . $row['currentBeans'] . '</td><td>' . $row['totalBeans'] . '</td><td>' . $row['farms'] . '</td><td>' . $row['plantations'] . '</td><td>' . $row['upgradedFarms'] . '</td><td>' . $row['upgradedPlantations'] . '</td></tr>');
+				echo('<tr><td>' . $rank . '</td><td>' . $row['userID'] . '</td><td>' . $row['currentBeans'] . '</td><td>' . $row['totalBeans'] . '</td><td>' . $row['farms'] . '</td><td>' . $row['plantations'] . '</td><td>' . $row['upgradedFarms'] . '</td><td>' . $row['upgradedPlantations'] . '</td></tr>');
 				$rank++;
 			}
 ?>
@@ -100,7 +100,7 @@
 <?php
 			// get all scores of users from game 3
 			$gid = 3;
-			$stmt = $db->prepare("SELECT * FROM leaderboard WHERE gid=?");
+			$stmt = $db->prepare("SELECT * FROM leaderboard WHERE gid=? ORDER BY score desc");
 			$stmt->bind_param("i", $gid);
 			$stmt->execute();
 			$result = $stmt->get_result();

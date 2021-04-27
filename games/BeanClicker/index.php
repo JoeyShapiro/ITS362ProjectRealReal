@@ -1,7 +1,7 @@
 
 <?php
-require('/var/www/its362/ITS362ProjectRealReal/mysql.inc.php');
-require('/var/www/its362/ITS362ProjectRealReal/includes/config.inc.php');
+require('/var/www/project/mysql.inc.php');
+require('/var/www/project/includes/config.inc.php');
 require('assets/html/header.htm');
 if(isset($_SESSION['id'])) {
 	$id = $_SESSION['id'];
@@ -19,7 +19,7 @@ if(isset($_SESSION['id'])) {
 	function insertBeans(string $username) {
 		try {
 		
-			$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+			$conn = new PDO("mysql:host=localhost;dbname=project", 'seed', 'dees');
 			
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$stmt = $conn->prepare("INSERT INTO beanClicker (username) VALUES (:username)");
@@ -35,7 +35,7 @@ if(isset($_SESSION['id'])) {
 	function insertAchievements(string $username) {
 		try {
 		
-			$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+			$conn = new PDO("mysql:host=localhost;dbname=project", 'seed', 'dees');
 			
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$stmt = $conn->prepare("INSERT INTO beanAchievements (username) VALUES (:username)");
@@ -52,7 +52,7 @@ if(isset($_SESSION['id'])) {
 	
 	function updateBeans(int $currentBeans, int $totalBeans, int $farms, int $plantations, int $upgradedFarms, int $upgradedPlantations, int $coffeeBeansUsed, $username){
 		try {
-			$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+			$conn = new PDO("mysql:host=localhost;dbname=project", 'seed', 'dees');
 			
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			
@@ -75,7 +75,7 @@ if(isset($_SESSION['id'])) {
 	
 	function updateAchievements($beans100, $beans1000, $addictionBegins, $coffeeDependent, $coffeeAddict, $username){
 		try {
-			$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+			$conn = new PDO("mysql:host=localhost;dbname=project", 'seed', 'dees');
 			
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			
@@ -98,7 +98,7 @@ if(isset($_SESSION['id'])) {
 
 	function getBeanObject(string $username){
 		try {
-			$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+			$conn = new PDO("mysql:host=localhost;dbname=project", 'seed', 'dees');
 			
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			
@@ -139,7 +139,7 @@ if(isset($_SESSION['id'])) {
 		
 	function getBeanAchievements(string $username) {
 		try {
-			$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+			$conn = new PDO("mysql:host=localhost;dbname=project", 'seed', 'dees');
 			
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			
@@ -175,7 +175,7 @@ if(isset($_SESSION['id'])) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	try {
-		$conn = new PDO("mysql:host=localhost;dbname=FinalProject", 'its362', 'toor');
+		$conn = new PDO("mysql:host=localhost;dbname=project", 'seed', 'dees');
 		
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		
