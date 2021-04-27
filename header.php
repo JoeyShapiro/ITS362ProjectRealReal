@@ -5,8 +5,8 @@
     </head>
 
     <header id="headerHeader">
-        <h1>Flash Game Project Site</h1>
-        <h3>For when playing flash games is PART of class</h3>
+        <h1>Game Project Site</h1>
+        <h3>For when playing games is PART of class</h3>
     </header>
 
     <nav id="headerNav">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 18, 2021 at 01:08 AM
+-- Generation Time: Apr 27, 2021 at 05:43 PM
 -- Server version: 5.7.33-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.7
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `FinalProject`
+-- Database: `project`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `beanAchievements` (
-  `userID` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
   `beans100` tinyint(1) NOT NULL DEFAULT '0',
   `beans1000` tinyint(1) NOT NULL DEFAULT '0',
   `addictionBegins` tinyint(1) NOT NULL DEFAULT '0',
@@ -39,8 +39,10 @@ CREATE TABLE `beanAchievements` (
 -- Dumping data for table `beanAchievements`
 --
 
-INSERT INTO `beanAchievements` (`userID`, `beans100`, `beans1000`, `addictionBegins`, `coffeeDependent`, `coffeeAddict`) VALUES
-('ryan', 0, 0, 0, 0, 0);
+INSERT INTO `beanAchievements` (`username`, `beans100`, `beans1000`, `addictionBegins`, `coffeeDependent`, `coffeeAddict`) VALUES
+('test', 1, 0, 1, 0, 0),
+('test', 1, 0, 1, 0, 0),
+('yoey', 0, 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -49,10 +51,9 @@ INSERT INTO `beanAchievements` (`userID`, `beans100`, `beans1000`, `addictionBeg
 --
 
 CREATE TABLE `beanClicker` (
-  `userID` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
   `currentBeans` float NOT NULL DEFAULT '0',
   `totalBeans` float NOT NULL DEFAULT '0',
-  `beansPerSecond` float NOT NULL DEFAULT '0',
   `farms` int(255) NOT NULL DEFAULT '0',
   `plantations` int(255) NOT NULL DEFAULT '0',
   `upgradedFarms` int(255) NOT NULL DEFAULT '0',
@@ -64,8 +65,9 @@ CREATE TABLE `beanClicker` (
 -- Dumping data for table `beanClicker`
 --
 
-INSERT INTO `beanClicker` (`userID`, `currentBeans`, `totalBeans`, `beansPerSecond`, `farms`, `plantations`, `upgradedFarms`, `upgradedPlantations`, `coffeeBeansUsed`) VALUES
-('ryan', 3, 3, 0, 0, 0, 0, 0, 0);
+INSERT INTO `beanClicker` (`username`, `currentBeans`, `totalBeans`, `farms`, `plantations`, `upgradedFarms`, `upgradedPlantations`, `coffeeBeansUsed`) VALUES
+('test', 50, 100, 0, 0, 0, 0, 1),
+('yoey', 7, 57, 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -77,6 +79,15 @@ CREATE TABLE `games` (
   `id` int(8) NOT NULL,
   `name` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `games`
+--
+
+INSERT INTO `games` (`id`, `name`) VALUES
+(1, 'HackingGame'),
+(2, 'BeanClicker'),
+(3, 'SportsQuiz');
 
 -- --------------------------------------------------------
 
@@ -90,6 +101,18 @@ CREATE TABLE `leaderboard` (
   `uid` int(8) NOT NULL,
   `score` int(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `leaderboard`
+--
+
+INSERT INTO `leaderboard` (`id`, `gid`, `uid`, `score`) VALUES
+(1, 1, 4, 0),
+(2, 1, 3, -2),
+(3, 3, 3, 100),
+(4, 1, 3, 1),
+(5, 3, 3, 30),
+(6, 1, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -112,7 +135,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `birth`) VALUES
 (1, 'admin', 0x61646d696e, '', ''),
 (2, 'test', 0x74657374, 'test', 'test'),
-(3, 'yoey', 0x373cc3eccdf4129918c3d1dfa62db75816316388989f53f62213f569f290198f, 'yoey', 'test');
+(3, 'yoey', 0x373cc3eccdf4129918c3d1dfa62db75816316388989f53f62213f569f290198f, 'yoey', 'test'),
+(4, 'Alice', 0x6a5310fe5967cd8391f38e72c1e415bfd2d685e3411e1f11927529b04c340408, 'alice@example.com', '2021-04-26'),
+(5, 'test2', 0x373cc3eccdf4129918c3d1dfa62db75816316388989f53f62213f569f290198f, 'email@email.com', '2021-04-14');
 
 --
 -- Indexes for dumped tables
@@ -122,13 +147,13 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `birth`) VALUES
 -- Indexes for table `beanAchievements`
 --
 ALTER TABLE `beanAchievements`
-  ADD KEY `userID` (`userID`);
+  ADD KEY `userID` (`username`);
 
 --
 -- Indexes for table `beanClicker`
 --
 ALTER TABLE `beanClicker`
-  ADD PRIMARY KEY (`userID`);
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Indexes for table `games`
@@ -156,17 +181,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `leaderboard`
 --
 ALTER TABLE `leaderboard`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
@@ -175,7 +200,7 @@ ALTER TABLE `users`
 -- Constraints for table `beanAchievements`
 --
 ALTER TABLE `beanAchievements`
-  ADD CONSTRAINT `beanAchievements_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `beanClicker` (`userID`);
+  ADD CONSTRAINT `beanAchievements_ibfk_1` FOREIGN KEY (`username`) REFERENCES `beanClicker` (`username`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

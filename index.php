@@ -56,7 +56,7 @@
 	<ul>
 		<li><a href="#top-game1">Hacking Game</a></li>
 		<li><a href="#top-game2">Bean Clicker</a></li>
-		<li><a href="#top-game3">Game 3</a></li>
+		<li><a href="#top-game3">Sports Quiz</a></li>
 	</ul>
 	<div id="top-game1">
 		<table id="table-game1" cellspacing="3", cellpadding="5">
